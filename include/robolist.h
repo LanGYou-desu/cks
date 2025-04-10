@@ -1,21 +1,6 @@
 #define ROBOLIST_H
 #ifdef ROBOLIST_H
 
-/* RRT树节点结构 */
-typedef struct RRTNode {
-    int x, y;             /* 节点坐标 */
-    float cost;           /* 到达成本 */
-    struct RRTNode* parent; /* 父节点指针 */
-} RRTNode;
-
-/* 机器人状态枚举 */
-typedef enum {
-    STATE_WORKING,   /* 工作中 */
-    STATE_TO_CHARGE, /* 前往充电 */
-    STATE_CHARGING,  /* 充电中 */
-    STATE_RETURNING  /* 返回任务 */
-} RobotState;
-
 //路径规划算法机器人结构体
 typedef struct Robot{
     int id;               /* 机器人ID */
@@ -23,9 +8,8 @@ typedef struct Robot{
     int tx, ty;           /* 当前目标 */
     int orig_tx, orig_ty; /* 原始目标 */
     float battery;        /* 当前电量 */
-    RobotState state;     /* 当前状态 */
+    int state;            /* 机器人状态 */
     FILE* logfile;        /* 日志文件指针 */
-    RRTNode* path;        /* 当前路径 */
     struct Robot* next;   /* 链表指针 */
 }Robot;
 
