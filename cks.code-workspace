@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"MOUSE.C": "cpp",
+			"SVGA.C": "cpp",
+			"BMP.C": "cpp",
+			"robolist.h": "c"
+		},
+		"makefile.launchConfigurations": [
+			{
+				"cwd": "d:\\Borland C++\\DISK_C\\cks\\output",
+				"binaryPath": "d:\\Borland C++\\DISK_C\\cks\\output\\main.exe",
+				"binaryArgs": []
+			}
+		]
+	}
+}

@@ -1,0 +1,15 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "d:\\Borland C++\\DISK_C\\cks\\output",
+            "binaryPath": "d:\\Borland C++\\DISK_C\\cks\\output\\main.exe",
+            "binaryArgs": []
+        }
+    ],
+    "files.associations": {
+        "SVGA.C": "cpp",
+        "BMP.C": "cpp",
+        "allfunc.h": "c",
+        "welcome.h": "c"
+    }
+}
