@@ -9,7 +9,7 @@ int mock_handin(int *flag,int *item)
     SHHEAD *shhp;
     
     rob.x=308;
-    rob.y=646;
+    rob.y=710;
     rob.flag=0;
     rob.energy=100;
 
@@ -208,7 +208,7 @@ void draw_mock_hand()
     bar1(0,0,100,50,0X67FC);
     put_asc16_size(26,10,2,2,"ESC",0X0000);
     
-    draw_hand_robot(308,646);
+    draw_hand_robot(308,710);
     puthz(762,25,"µÁ¡ø£∫",32,32,0X0000);
     put_asc16_size(847,20,3,3,"100%",0X0000);
 }

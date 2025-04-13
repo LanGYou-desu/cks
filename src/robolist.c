@@ -25,7 +25,7 @@ ROHEAD* create_robolist(ROHEAD* hp)
         // 初始化节点数据
         p->robot.id = i + 1;// 机器人编号
         p->robot.x = 340-64*i;
-        p->robot.y = 646;
+        p->robot.y = 710;
         p->robot.flag = 0;
         p->robot.energy = 100;
         p->next = NULL;
