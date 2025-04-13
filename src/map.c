@@ -2,7 +2,7 @@
 
 OBS obs[6];
 SHELFPOINT shelfpoint[3];
-LIFT lift[3];
+LIFT lift[4];
 
 int map_preview(int *flag)
 {
@@ -75,25 +75,27 @@ void init_obs()
 void init_shelfpoint()
 {
     /*一类货架*/
-    shelfpoint[0].x=176;
-    shelfpoint[0].y=220;
+    shelfpoint[0].x=178;
+    shelfpoint[0].y=231;
     /*二类货架*/
-    shelfpoint[1].x=176;
-    shelfpoint[1].y=220;
+    shelfpoint[1].x=513;
+    shelfpoint[1].y=231;
     /*三类货架*/
     shelfpoint[2].x=849;
-    shelfpoint[2].y=220;
+    shelfpoint[2].y=231;
 }
 
 void init_lift()
 {
     /*一类货架*/
-    lift[0].x=513;
-    lift[0].y=427;
+    lift[0].x=219;
+    lift[0].y=398;
     /*二类货架*/
-    lift[1].x=218;
-    lift[1].y=301;
+    lift[1].x=807;
+    lift[1].y=398;
+    lift[2].x=471;
+    lift[2].y=398;
     /*三类货架*/
-    lift[2].x=805;
-    lift[2].y=301;
+    lift[3].x=807;
+    lift[3].y=398;
 }

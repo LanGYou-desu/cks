@@ -32,7 +32,7 @@ int mock_handin(int *flag,int *item)
         }
         else
         {
-            if((rob.x>387&&rob.x<640)&&(rob.y>92&&rob.y<210))//充电站
+            if((rob.x>386&&rob.x<640)&&(rob.y>92&&rob.y<210))//充电站
             {
                 if(rob.energy>=100)
                 {
@@ -46,7 +46,7 @@ int mock_handin(int *flag,int *item)
                 put_asc16_size(847,20,3,3,temp,0X0000);
                 delay(50);
             }   
-            if((rob.x>387&&rob.x<640)&&(rob.y>564&&rob.y<679)&&rob.flag==0)//入口
+            if((rob.x>386&&rob.x<640)&&(rob.y>661&&rob.y<751)&&rob.flag==0)//入口
             {
                 rob.flag=1;
                 draw_robot(rob.x,rob.y,rob.flag);
@@ -133,7 +133,7 @@ int mock_handout(int *flag,int *item)
         }
         else
         {
-            if((rob.x>387&&rob.x<640)&&(rob.y>92&&rob.y<210))//充电站
+            if((rob.x>386&&rob.x<640)&&(rob.y>92&&rob.y<210))//充电站
             {
                 if(rob.energy>=100)
                 {
@@ -147,7 +147,7 @@ int mock_handout(int *flag,int *item)
                 put_asc16_size(847,20,3,3,temp,0X0000);
                 delay(50);
             }   
-            else if((rob.x>387&&rob.x<640)&&(rob.y>564&&rob.y<679)&&rob.flag==0)//入口
+            else if((rob.x>386&&rob.x<640)&&(rob.y>661&&rob.y<751)&&rob.flag==0)//入口
             {
                 rob.flag=0;
                 draw_robot(rob.x,rob.y,rob.flag);

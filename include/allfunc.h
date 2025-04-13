@@ -87,7 +87,7 @@ extern int login_flag;//登录标志
 extern auto_flag;//自动标志
 extern OBS obs[6];//障碍物
 extern SHELFPOINT shelfpoint[3];//货架坐标
-extern LIFT lift[3];//升降台
+extern LIFT lift[4];//升降台
 
 extern Robot* robot_list; // 机器人链表头指针
 

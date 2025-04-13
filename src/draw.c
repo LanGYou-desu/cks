@@ -35,30 +35,14 @@ void draw_item(int x,int y,int type,int floor,int flag)
 {
 	int rx,ry;
 
-	if(type==2||type==3)
+	rx=x;
+	ry=y+IL*flag;
+	if(floor==0)
 	{
-		rx=x;
-		ry=y+IL*flag;
-		if(floor==0)
-		{
-			bar1(rx-30,ry-30,rx+30,ry+30,0X5A9C);
-		}
-		else if(floor==1)
-		{
-			bar1(rx-20,ry-20,rx+20,ry+20,0XCBA4);
-		}
+		bar1(rx-30,ry-30,rx+30,ry+30,0X5A9C);
 	}
-	else if(type==1)
+	else if(floor==1)
 	{
-		rx=x+IL*flag;
-		ry=y;
-		if(floor==0)
-		{
-			bar1(rx-30,ry-30,rx+30,ry+30,0X5A9C);
-		}
-		else if(floor==1)
-		{
-			bar1(rx-20,ry-20,rx+20,ry+20,0XCBA4);
-		}
+		bar1(rx-20,ry-20,rx+20,ry+20,0XCBA4);
 	}
 }
