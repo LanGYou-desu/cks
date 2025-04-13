@@ -134,7 +134,7 @@ Robot* createRoboList(ROHEAD *hp)
     head->orig_tx = 0;
     head->orig_ty = 0;
     head->battery = 0;
-    head->state = STATE_WORKING; // 初始状态为工作中
+    head->state = 0; // 初始状态为工作中
     head->logfile = NULL;
     head->next = NULL;
 
@@ -159,7 +159,7 @@ Robot* createRoboList(ROHEAD *hp)
         p->orig_tx = 0;
         p->orig_ty = 0;
         p->battery = 0;
-        p->state = STATE_WORKING; // 初始状态为工作中
+        p->state = 0; // 初始状态为工作中
         p->logfile = NULL;
         p->next = NULL;
     }
@@ -173,7 +173,7 @@ void setTarget(Robot *p,int tx,int ty)
         p->ty = ty;
         p->orig_tx = tx; //保存原始目标坐标
         p->orig_ty = ty;
-        p->state = STATE_WORKING; //设置状态为工作中
+        p->state = 0; //设置状态为工作中
 }
 
 Robot* findRobot(Robot *head, int id)

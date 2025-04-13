@@ -89,7 +89,6 @@ extern OBS obs[6];//障碍物
 extern SHELFPOINT shelfpoint[3];//货架坐标
 extern LIFT lift[3];//升降台
 
-extern Robot *robotList; // 机器人链表头指针
-extern int node_count;   // RRT节点计数器
+extern Robot* robot_list; // 机器人链表头指针
 
 #endif
