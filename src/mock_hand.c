@@ -203,7 +203,7 @@ int mock_handout(int *flag,int *item)
 void draw_mock_hand()
 {
     bar1(0,0,1024,768,0XFFFF);
-    Readbmp64k(120,60,"C:\\cks\\image\\maptwo.bmp");
+    Readbmp64k(120,0,"C:\\cks\\image\\maptwo.bmp");
     
     bar1(0,0,100,50,0X67FC);
     put_asc16_size(26,10,2,2,"ESC",0X0000);

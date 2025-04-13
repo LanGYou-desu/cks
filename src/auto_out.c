@@ -39,7 +39,7 @@ void draw_auto_out(ROHEAD *rohp)
     ROBO rob;
 
     bar1(0,0,1024,768,0XFFFF);
-    Readbmp64k(120,60,"C:\\cks\\image\\maptwo.bmp");
+    Readbmp64k(120,6,"C:\\cks\\image\\maptwo.bmp");
     bar1(0,0,100,50,0X67FC);
     puthz(18,9,"·µ»Ø",32,32,0X0000);
     

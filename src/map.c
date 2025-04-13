@@ -28,7 +28,7 @@ void draw_map_preview()
     bar1(0,0,1024,768,0XFFFF);
     bar1(0,0,100,50,0X67FC);
     puthz(18,9,"·µ»Ø",32,32,0X0000);
-    Readbmp64k(120,60,"C:\\cks\\image\\map.bmp");
+    Readbmp64k(120,0,"C:\\cks\\image\\map.bmp");
 }
 
 void init_map()
