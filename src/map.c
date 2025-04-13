@@ -41,30 +41,30 @@ void init_map()
 void init_obs()
 {
     /*入口&出口*/
-    obs[0].x1=387;
-    obs[0].y1=596;
+    obs[0].x1=386;
+    obs[0].y1=691;
     obs[0].x2=640;
-    obs[0].y2=679;
+    obs[0].y2=751;
     /*一类货架*/
-    obs[1].x1=303;
-    obs[1].y1=344;
-    obs[1].x2=723;
-    obs[1].y2=427;
+    obs[1].x1=135;
+    obs[1].y1=188;
+    obs[1].x2=219;
+    obs[1].y2=607;
     /*二类货架*/
-    obs[2].x1=135;
-    obs[2].y1=176;
-    obs[2].x2=218;
-    obs[2].y2=597;
+    obs[2].x1=471;
+    obs[2].y1=188;
+    obs[2].x2=555;
+    obs[2].y2=607;
     /*三类货架*/
-    obs[3].x1=805;
-    obs[3].y1=176;
-    obs[3].x2=890;
-    obs[3].y2=597;
+    obs[3].x1=807;
+    obs[3].y1=188;
+    obs[3].x2=891;
+    obs[3].y2=607;
     /*充电站*/
-    obs[4].x1=387;
-    obs[4].y1=92;
+    obs[4].x1=384;
+    obs[4].y1=44;
     obs[4].x2=640;
-    obs[4].y2=178;
+    obs[4].y2=104;
     /*返回按键*/
     obs[5].x1=0;
     obs[5].y1=0;
@@ -75,8 +75,8 @@ void init_obs()
 void init_shelfpoint()
 {
     /*一类货架*/
-    shelfpoint[0].x=346;
-    shelfpoint[0].y=386;
+    shelfpoint[0].x=176;
+    shelfpoint[0].y=220;
     /*二类货架*/
     shelfpoint[1].x=176;
     shelfpoint[1].y=220;
