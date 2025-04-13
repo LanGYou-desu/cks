@@ -89,6 +89,6 @@ extern OBS obs[6];//障碍物
 extern SHELFPOINT shelfpoint[3];//货架坐标
 extern LIFT lift[4];//升降台
 
-extern Robot* robot_list; // 机器人链表头指针
+extern Robot* robotlist; // 机器人链表头指针
 
 #endif

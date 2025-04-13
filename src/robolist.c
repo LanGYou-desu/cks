@@ -133,6 +133,11 @@ Robot* createRoboList(ROHEAD *hp)
     head->ty = 0;
     head->orig_tx = 0;
     head->orig_ty = 0;
+    head->prev_x = 0;
+    head->prev_y = 0;
+    head->hist_index = 0;
+    head->escape_count = 0;
+    head->same_pos_count = 0;
     head->battery = 0;
     head->state = 0; // 初始状态为工作中
     head->logfile = NULL;
@@ -158,6 +163,11 @@ Robot* createRoboList(ROHEAD *hp)
         p->ty = 0;
         p->orig_tx = 0;
         p->orig_ty = 0;
+        p->prev_x = 0;
+        p->prev_y = 0;
+        p->hist_index = 0;
+        p->escape_count = 0;
+        p->same_pos_count = 0;
         p->battery = 0;
         p->state = 0; // 初始状态为工作中
         p->logfile = NULL;

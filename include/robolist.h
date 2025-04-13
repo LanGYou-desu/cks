@@ -2,16 +2,23 @@
 #ifdef ROBOLIST_H
 
 //路径规划算法机器人结构体
-typedef struct Robot{
-    int id;               /* 机器人ID */
-    int x, y;             /* 当前位置 */
-    int tx, ty;           /* 当前目标 */
-    int orig_tx, orig_ty; /* 原始目标 */
-    float battery;        /* 当前电量 */
-    int state;            /* 机器人状态 */
-    FILE* logfile;        /* 日志文件指针 */
-    struct Robot* next;   /* 链表指针 */
-}Robot;
+typedef struct Robot {
+    int id;                // 唯一标识符
+    int x, y;              // 当前中心坐标（整数）
+    int tx, ty;            // 当前目标坐标
+    int orig_tx, orig_ty;  // 原始目标坐标（充电前）
+    int prev_x, prev_y;    // 上次记录坐标（用于路径平滑）
+    int hist_dx[5];        // X方向移动历史
+    int hist_dy[5];        // Y方向移动历史
+    int hist_index;        // 历史记录索引
+    int escape_count;      // 脱困尝试计数器
+    int same_pos_count;    // 相同位置计数器
+    float battery;         // 剩余电量（0-100）
+    int cargo_type;        // 携带货物类型
+    int state;             // 0-工作中 1-前往充电 2-充电中
+    FILE* logfile;         // 日志文件指针
+    struct Robot* next;    // 链表指针
+} Robot;
 
 //机器人结构
 typedef struct{

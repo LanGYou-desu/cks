@@ -1,25 +1,41 @@
 #define MOTPLAN_H
 #ifdef MOTPLAN_H
 
-/* 常量定义 */
-#define SCREEN_WIDTH    1024
-#define SCREEN_HEIGHT   768
-#define ROBOT_SIZE      50     // 机器人边长
-#define STEP_BASE       8      // 基础步长
-#define CHARGE_RATE     100.0f   // 充电速率
-#define LOW_BATTERY     20.0f  // 低电量阈值
-#define BATTERY_COST    0.05f   // 每步耗电量
+/* 力场参数宏定义 */
+#define ATTRACT_GAIN      0.8f    // 目标引力系数
+#define REPULSE_GAIN     200.0f   // 障碍物斥力系数
+#define SOCIAL_GAIN      150.0f   // 机器人间斥力系数
+#define REPULSE_RANGE    150      // 斥力作用范围
+#define SMOOTH_FACTOR     0.3f    // 路径平滑系数
+#define RANDOM_ANGLE      0.5f    // 随机扰动角度(弧度)
 
-/* 函数原型声明 */
-float fmaxf(float a, float b);
-float fminf(float a, float b);
-void robot_init(int id, int x, int y);
-void robot_update(Robot* bot);
-void main_loop(void);
-float calc_distance(int x1, int y1, int x2, int y2);
-int check_collision(Robot* bot, int dx, int dy);
-void path_adjust(Robot* bot, int* dx, int* dy);
-void handle_charging(Robot* bot);
-void log_write(Robot* bot);
+/* 系统常量 */
+#define SCREEN_WIDTH    1024
+#define SCREEN_HEIGHT    768
+#define ROBOT_SIZE        50
+#define STEP_BASE          8
+#define CHARGE_POWER      30
+#define HISTORY_SIZE       5
+#define CHARGE_SPEED     0.5f
+#define MAX_ROBOTS        3
+#define MAX_STEPS     10000
+#define IDLE_LIMIT      100
+#define ESCAPE_ATTEMPTS   5
+
+#define TARGET_RADIUS     10     // 目标点有效半径
+#define CHARGE_RADIUS     15     // 充电站有效半径
+#define DAMPING_FACTOR    0.2f   // 近目标阻尼系数
+
+/* 函数声明 */
+int checkCollision(int x, int y, int exclude_id);
+void calculateForces(Robot* robot, float* dx, float* dy);
+void smoothPath(Robot* robot, float* dx, float* dy);
+void moveTowards(Robot* robot, float dx, float dy);
+void handleCharging(Robot* robot);
+void mainLoop();
+float distance(int x1, int y1, int x2, int y2);
+float fminf(float a,float b);
+float fmaxf(float a,float b);
+double round(double r);
 
 #endif

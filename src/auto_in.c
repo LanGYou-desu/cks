@@ -11,7 +11,7 @@ int auto_in(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
     draw_auto_in(rohp);
     mouse_on(mouse);
 
-    robot_list = robot;
+    robotlist = robot;
     path_in(robot);
 
     while(1)
@@ -92,20 +92,22 @@ void item_in(SHHEAD *hp,int type)
 
 void path_in(Robot *robot)
 {
-    
-    Robot *p = NULL;
+    Robot *head = NULL;
 
+    randomize();
     mouse_off(&mouse);
 
-    p=findRobot(robot,1);
-    setTarget(p,200,40);
-    p=findRobot(robot,2);
-    setTarget(p,500,40);
-    p=findRobot(robot,3);
-    setTarget(p,800,40);
+    head=findRobot(robot,1);
+    setTarget(head,200,40);
+    head=findRobot(robot,2);
+    setTarget(head,500,40);
+    head=findRobot(robot,3);
+    setTarget(head,800,40);
+    
+    robotlist = robot;
 
     /* 运行仿真 */
-    main_loop();
+    mainLoop();
     
     /* 清理资源 */
     freeRoboList(robot);
