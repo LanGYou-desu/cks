@@ -87,14 +87,10 @@ void turn_list(ROHEAD *hp,Robot *robot)
 
         //创建日志文件
         sprintf(fname, "C:\\cks\\path\\robot%d.log", p2->id);
-        p2->logfile = fopen(fname, "w");
+        p2->logfile = fopen(fname, "a");
         if(p2->logfile == NULL) {
             printf("Error: Cannot create log file for robot %d\n", p2->id);
         }
-
-        /* 写入初始位置 */
-        fprintf(p2->logfile, "Robot%d Path Log\n", p2->id);
-        fprintf(p2->logfile, "====================\n");
 
         p1 = p1->next;
         p2 = p2->next;

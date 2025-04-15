@@ -59,13 +59,12 @@ int checkCollision(int x, int y, int exclude_id) {
 * 力场计算函数（使用宏定义参数）
 *******************************************************/
 void calculateForces(Robot* robot, float* dx, float* dy) {
-    float fx, fy, ftx, fty, target_dist, att_factor;
+    float fx, fy, ftx, fty, target_dist, att_factor, rep_factor, social_factor;
     int i, near_x, near_y;
     Robot* other;
 
     int charge_x, charge_y;
-    float rep_factor, social_factor;
-    float obs_dist, charge_dist, other_dist;
+    float obs_dist, charge_dist, other_dist, border_dist;
     float length;
     
     fx = (float)robot->x;
@@ -85,17 +84,10 @@ void calculateForces(Robot* robot, float* dx, float* dy) {
         *dy += (fty - fy) * ATTRACT_GAIN * att_factor;
     }
 
-    /* 充电站特殊处理 */
-    if(robot->state == 1) { // 前往充电状态
-        charge_x = (obs[4].x1 + obs[4].x2)/2;
-        charge_y = (obs[4].y1 + obs[4].y2)/2;
-        charge_dist = distance(robot->x, robot->y, charge_x, charge_y);
-    }
-
-    /* 障碍物斥力 */
-    for(i=0; i<6; i++) {
-        if(i == 4) continue;
-
+     /* 障碍物斥力 */
+     for(i=0; i<6; i++) {
+        if(robot->state==1 && i==4) continue; // 前往充电时忽略充电站
+        
         near_x = (robot->x<obs[i].x1) ? obs[i].x1 : 
                 (robot->x>obs[i].x2) ? obs[i].x2 : robot->x;
         near_y = (robot->y<obs[i].y1) ? obs[i].y1 : 
@@ -103,10 +95,35 @@ void calculateForces(Robot* robot, float* dx, float* dy) {
         
         obs_dist = distance(robot->x, robot->y, near_x, near_y);
         if(obs_dist < REPULSE_RANGE) {
-            rep_factor = 1.0f - (obs_dist/REPULSE_RANGE);
-            *dx += (fx-(float)near_x)*REPULSE_GAIN*rep_factor/obs_dist;
-            *dy += (fy-(float)near_y)*REPULSE_GAIN*rep_factor/obs_dist;
+            rep_factor = 1.0 - (obs_dist/REPULSE_RANGE);
+            *dx += (fx-(double)near_x)*REPULSE_GAIN*rep_factor/obs_dist;
+            *dy += (fy-(double)near_y)*REPULSE_GAIN*rep_factor/obs_dist;
         }
+    }
+
+    // 左边界斥力
+    if(robot->x < BORDER_RANGE) {
+        border_dist = (double)robot->x;
+        rep_factor = 1.0 - (border_dist/BORDER_RANGE);
+        *dx += BORDER_REPULSE_GAIN * rep_factor;
+    }
+    // 右边界斥力
+    if(robot->x > SCREEN_WIDTH - BORDER_RANGE) {
+        border_dist = (double)(SCREEN_WIDTH - robot->x);
+        rep_factor = 1.0 - (border_dist/BORDER_RANGE);
+        *dx -= BORDER_REPULSE_GAIN * rep_factor;
+    }
+    // 上边界斥力
+    if(robot->y < BORDER_RANGE) {
+        border_dist = (double)robot->y;
+        rep_factor = 1.0 - (border_dist/BORDER_RANGE);
+        *dy += BORDER_REPULSE_GAIN * rep_factor;
+    }
+    // 下边界斥力
+    if(robot->y > SCREEN_HEIGHT - BORDER_RANGE) {
+        border_dist = (double)(SCREEN_HEIGHT - robot->y);
+        rep_factor = 1.0 - (border_dist/BORDER_RANGE);
+        *dy -= BORDER_REPULSE_GAIN * rep_factor;
     }
 
     /* 机器人间斥力 */
@@ -171,6 +188,19 @@ void smoothPath(Robot* robot, float* dx, float* dy) {
     }
 }
 
+/* 新增函数：瞬移条件判断 */
+int shouldTeleport(Robot* robot) {
+    int charge_x, charge_y;
+    // 充电目标特殊处理
+    if(robot->state == 1) {
+        charge_x = (obs[4].x1 + obs[4].x2)/2;
+        charge_y = (obs[4].y1 + obs[4].y2)/2;
+        return distance(robot->x, robot->y, charge_x, charge_y) <= CHARGE_RADIUS;
+    }
+    // 普通目标判断
+    return distance(robot->x, robot->y, robot->tx, robot->ty) <= TARGET_RADIUS;
+}
+
 /*******************************************************
 * 移动控制与防循环触发
 *******************************************************/
@@ -178,6 +208,39 @@ void moveTowards(Robot* robot, float dx, float dy) {
     float step=STEP_BASE, new_x, new_y;
     int i, final_x, final_y, try_x, try_y;
     float target_dist;
+    double predict_x, predict_y;
+    int valid;
+
+    /* 瞬移检测（增加障碍物检查）*/
+    if(shouldTeleport(robot)) {
+        valid = 1;
+        // 瞬移前进行碰撞检测
+        if(robot->state == 1) {
+            valid = !checkCollision((obs[4].x1+obs[4].x2)/2, 
+                                  (obs[4].y1+obs[4].y2)/2, 
+                                  robot->id);
+        } else {
+            valid = !checkCollision(robot->tx, robot->ty, robot->id);
+        }
+        
+        if(valid) {
+            /* 瞬移逻辑 */
+            if(shouldTeleport(robot)) {
+                if(robot->state == 1) {
+                // 对齐充电站中心坐标
+                robot->x = (obs[4].x1 + obs[4].x2)/2;
+                robot->y = (obs[4].y1 + obs[4].y2)/2;
+            } else {
+                // 普通目标直接传送
+                robot->x = robot->tx;
+                robot->y = robot->ty;
+            }
+                fprintf(robot->logfile, "%d,%d\n", robot->x, robot->y);
+                return; // 跳过后续移动逻辑
+            }   
+        }
+        // 如果瞬移位置有障碍则继续正常移动
+    }
 
     /* 防循环检测 */
     if(robot->x == robot->prev_x && robot->y == robot->prev_y) {
@@ -206,11 +269,15 @@ void moveTowards(Robot* robot, float dx, float dy) {
 
     /* 步长调整 */
     if(robot->state==1) step *= 1.2f;
-    for(i=1; i<=3; i++) {
-        new_x = (float)robot->x + dx*step*i;
-        new_y = (float)robot->y + dy*step*i;
-        if(checkCollision((int)new_x, (int)new_y, robot->id)) {
-            step *= 0.7f;
+    /* 改进的路径预测 */
+    for(i=1; i<=5; i++) { // 增加预测步数到5步
+        predict_x = robot->x + dx*step*i;
+        predict_y = robot->y + dy*step*i;
+        if(checkCollision((int)predict_x, (int)predict_y, robot->id)) {
+            step *= 0.6; // 增强减速幅度
+            // 增加侧向力扰动
+            dx += (rand()%100 - 50)*0.01;
+            dy += (rand()%100 - 50)*0.01;
             break;
         }
     }
@@ -319,11 +386,23 @@ void mainLoop() {
         }
 
         all_reached = (reached_count==MAX_ROBOTS);
-        if(all_reached || (any_moved==0 && ++idle_steps>IDLE_LIMIT))
+        if(all_reached || (any_moved==0 && ++idle_steps>IDLE_LIMIT)){
+            all_reach();
             break;
-
+        }
         delay(100);
     }
+}
+
+/*******************************************************
+ * 所有机器人到达目标处理
+ * 所有机器人到达目标后，更新目标坐标
+ * 以便进行下一次路径规划
+ *******************************************************/
+void all_reach(){
+    robotlist->x = robotlist->tx;
+    robotlist->y = robotlist->ty;
+    robotlist->state = 0;
 }
 
 /*******************************************************

@@ -187,3 +187,12 @@ void update_shelf(int type,SHHEAD *hp)
         }
     }
 }
+
+void renew_pathfile()
+{
+    Robot *current = robotlist;
+    while(current!=NULL)
+    {
+        current=current->next;
+    }
+}
