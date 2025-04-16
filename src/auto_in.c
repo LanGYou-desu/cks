@@ -37,21 +37,14 @@ int auto_in(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
 
 void path_in(Robot *robot, int robonum)
 {
-    Robot *head = NULL;
-
     randomize();
     mouse_off(&mouse);
 
-    head=findRobot(robot,1);
-    setTarget(head,200,40);
-    head=findRobot(robot,2);
-    setTarget(head,500,40);
-    head=findRobot(robot,3);
-    setTarget(head,800,40);
+    setRobotPoint(robot,1,5);
+    setRobotPoint(robot,2,6);
+    setRobotPoint(robot,3,3);
 
-    robotlist=robot;
-
-       /* 运行仿真 */
+    /* 运行仿真 */
     mainLoop(robonum);
     
     mouse_on(mouse);

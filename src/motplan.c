@@ -386,7 +386,7 @@ void mainLoop(int robonum) {
             }
             handleCharging(current);
 
-            /* 记录每个时间步的位置（新增）*/
+            /* 记录每个时间步的位置 */
             fprintf(current->logfile, "%d,%d\n", current->x, current->y);
 
             /* 状态检测 */
@@ -414,6 +414,11 @@ void mainLoop(int robonum) {
     /* 最终位置确认写入 */
     current = robotlist;
     while(current) {
+        current->x=current->tx;
+        current->y=current->ty;
+        bar1(current->prev_x-25,current->prev_y-25,
+             current->prev_x+25,current->prev_y+25,0XFFFF);
+        draw_robot(current->x,current->y,0);
         fprintf(current->logfile, "%d,%d\n", current->x, current->y);
         current = current->next;
     }

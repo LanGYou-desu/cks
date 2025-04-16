@@ -37,6 +37,7 @@ void init_map()
     init_obs();
     init_shelfpoint();
     init_lift();
+    init_mappoint();
 }
 
 void init_obs()
