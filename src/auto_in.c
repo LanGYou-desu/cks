@@ -3,16 +3,16 @@
 int auto_in(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
 {
     int key;
+    int robonum = rohp->length;
+    
     Robot *robot = createRoboList(rohp);
-
     turn_list(rohp, robot);
 
     mouse_off(&mouse);
     draw_auto_in(rohp);
     mouse_on(mouse);
 
-    robotlist = robot;
-    path_in(robot);
+    path_in(robot, robonum);
 
     while(1)
     {
@@ -29,10 +29,34 @@ int auto_in(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
         {
             *flag=7;
             freeRoboList(robot);
+            freeRoboList(robotlist);
             return 0;
         }
     }
 }
+
+void path_in(Robot *robot, int robonum)
+{
+    Robot *head = NULL;
+
+    randomize();
+    mouse_off(&mouse);
+
+    head=findRobot(robot,1);
+    setTarget(head,200,40);
+    head=findRobot(robot,2);
+    setTarget(head,500,40);
+    head=findRobot(robot,3);
+    setTarget(head,800,40);
+
+    robotlist=robot;
+
+       /* 运行仿真 */
+    mainLoop(robonum);
+    
+    mouse_on(mouse);
+}
+
 
 void draw_auto_in(ROHEAD *rohp)
 {
@@ -88,28 +112,4 @@ void item_in(SHHEAD *hp,int type)
             }
         }
     }
-}
-
-void path_in(Robot *robot)
-{
-    Robot *head = NULL;
-
-    randomize();
-    mouse_off(&mouse);
-
-    head=findRobot(robot,1);
-    setTarget(head,200,40);
-    head=findRobot(robot,2);
-    setTarget(head,500,40);
-    head=findRobot(robot,3);
-    setTarget(head,800,40);
-    
-    robotlist = robot;
-
-    /* 运行仿真 */
-    mainLoop();
-    
-    /* 清理资源 */
-    freeRoboList(robot);
-    mouse_on(mouse);
 }

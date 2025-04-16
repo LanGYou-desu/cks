@@ -188,11 +188,15 @@ void update_shelf(int type,SHHEAD *hp)
     }
 }
 
-void renew_pathfile()
+void setRobotPoint(Robot *robot, int id, int pointid)
 {
-    Robot *current = robotlist;
-    while(current!=NULL)
-    {
-        current=current->next;
+    // 查找链表中指定 id 的机器人节点
+    Robot *head = findRobot(robot, id);
+    if (head == NULL) {
+        // 如果找不到对应的机器人，直接返回
+        return;
     }
+
+    // 修改该节点的目标点
+    setTarget(head, point[pointid].x, point[pointid].y);
 }

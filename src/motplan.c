@@ -211,6 +211,16 @@ void moveTowards(Robot* robot, float dx, float dy) {
     double predict_x, predict_y;
     int valid;
 
+    target_dist = distance(robot->x, robot->y, robot->tx, robot->ty);
+    /* 到达检测（包含充电站特殊处理）*/
+    if(target_dist <= TARGET_RADIUS || 
+       (robot->state == 1 && target_dist <= CHARGE_RADIUS)) {
+        robot->x = robot->tx; // 对齐精确坐标
+        robot->y = robot->ty;
+        robot->reached = 1;   // 标记到达状态
+        return;
+    }
+
     /* 瞬移检测（增加障碍物检查）*/
     if(shouldTeleport(robot)) {
         valid = 1;
@@ -251,15 +261,6 @@ void moveTowards(Robot* robot, float dx, float dy) {
         }
     } else {
         robot->same_pos_count = 0;
-    }
-
-    /* 到达目标检测 */
-    target_dist = distance(robot->x, robot->y, robot->tx, robot->ty);
-    if(target_dist <= TARGET_RADIUS) {
-        robot->x = robot->tx; // 直接对齐目标
-        robot->y = robot->ty;
-        fprintf(robot->logfile, "%d,%d\n", robot->x, robot->y);
-        return;
     }
 
     /* 近目标阻尼 */
@@ -313,8 +314,6 @@ void moveTowards(Robot* robot, float dx, float dy) {
 
     bar1(robot->prev_x-25,robot->prev_y-25,robot->prev_x+25,robot->prev_y+25,0XFFFF);
     draw_robot(robot->x,robot->y,0);
-
-    fprintf(robot->logfile, "%d,%d\n", robot->x, robot->y);
 }
 
 /*******************************************************
@@ -324,6 +323,9 @@ void handleCharging(Robot* robot) {
     int charge_x = (obs[4].x1 + obs[4].x2)/2;
     int charge_y = (obs[4].y1 + obs[4].y2)/2;
     float charge_dist = distance(robot->x, robot->y, charge_x, charge_y);
+
+    /* 已到达机器人不处理充电逻辑 */
+    if(robot->reached) return;
 
     switch(robot->state) {
         case 1: // 前往充电站
@@ -351,25 +353,32 @@ void handleCharging(Robot* robot) {
                 robot->ty = charge_y;
             }
     }
+
+    if(robot->state == 2 && robot->battery >= 100.0) {
+        robot->reached = 0; // 恢复可移动状态
+    }
 }
 
 /*******************************************************
 * 主循环（含自动终止条件）
 *******************************************************/
-void mainLoop() {
+void mainLoop(int robonum) {
     int steps=0, idle_steps=0, all_reached;
     int any_moved=0, reached_count=0;
     int prev_x=0, prev_y=0;
     float dx, dy;
     Robot* current;
 
-    while(steps++ < MAX_STEPS) {
+    while(steps++ < MAX_STEPS && !allRobotsReached()) {
         current = robotlist;
+        any_moved = 0;  // 重置移动标志
+        reached_count = 0;
 
         while(current) {
-            prev_x=current->x;
-            prev_y=current->y;
+            prev_x = current->x;
+            prev_y = current->y;
             
+            /* 移动逻辑 */
             if(current->state != 2) {
                 calculateForces(current, &dx, &dy);
                 smoothPath(current, &dx, &dy);
@@ -377,32 +386,65 @@ void mainLoop() {
             }
             handleCharging(current);
 
-            if(current->x!=prev_x || current->y!=prev_y) any_moved=1;
-            if(current->state==0 && 
-               distance(current->x, current->y, current->tx, current->ty)<STEP_BASE)
-                reached_count++;
+            /* 记录每个时间步的位置（新增）*/
+            fprintf(current->logfile, "%d,%d\n", current->x, current->y);
 
+            /* 状态检测 */
+            if(current->x != prev_x || current->y != prev_y) any_moved = 1;
+            if(current->state == 0 && distance(current->x, current->y, 
+                current->tx, current->ty) < STEP_BASE) {
+                current->x = current->tx;
+                current->y = current->ty;
+                current->reached = 1;
+                reached_count++;
+            }
+            
             current = current->next;
         }
 
-        all_reached = (reached_count==MAX_ROBOTS);
-        if(all_reached || (any_moved==0 && ++idle_steps>IDLE_LIMIT)){
+        /* 终止条件判断 */
+        all_reached = (reached_count == robonum);
+        if(all_reached || (any_moved == 0 && ++idle_steps > IDLE_LIMIT)){
             all_reach();
             break;
         }
         delay(100);
     }
+
+    /* 最终位置确认写入 */
+    current = robotlist;
+    while(current) {
+        fprintf(current->logfile, "%d,%d\n", current->x, current->y);
+        current = current->next;
+    }
 }
 
 /*******************************************************
- * 所有机器人到达目标处理
- * 所有机器人到达目标后，更新目标坐标
- * 以便进行下一次路径规划
- *******************************************************/
-void all_reach(){
-    robotlist->x = robotlist->tx;
-    robotlist->y = robotlist->ty;
-    robotlist->state = 0;
+* 所有机器人到达目标处理（支持多目标更新）
+*******************************************************/
+void all_reach() {
+    Robot* current = robotlist;
+    while(current) {
+        /* 保持当前坐标为最后记录值 */
+        current->x = current->tx;
+        current->y = current->ty;
+        
+        /* 重置状态 */
+        current->reached = 0;
+        current->state = 0;
+        
+        current = current->next;
+    }
+}
+
+/* 全局状态检查函数 */
+int allRobotsReached() {
+    Robot* current = robotlist;
+    while(current) {
+        if(!current->reached) return 0;
+        current = current->next;
+    }
+    return 1;
 }
 
 /*******************************************************

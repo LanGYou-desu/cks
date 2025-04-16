@@ -86,6 +86,7 @@ extern MOUSE mouse;//ÉùÃ÷È«¾Ö±äÁ¿£¬±¾ÏîÄ¿¹¤³Ì¹²ÓÃÍ¬Ò»¸öÊó±ê½á¹¹£¬¹ÊÃ¿¸ö£¨ĞèÒªÊó±
 extern int login_flag;//µÇÂ¼±êÖ¾
 extern auto_flag;//×Ô¶¯±êÖ¾
 extern OBS obs[6];//ÕÏ°­Îï
+extern POINT point[10];//Â·¾¶½Úµã
 extern SHELFPOINT shelfpoint[3];//»õ¼Ü×ø±ê
 extern LIFT lift[4];//Éı½µÌ¨
 

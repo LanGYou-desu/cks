@@ -19,4 +19,7 @@ SHNODE *find_shelf(int type,SHHEAD *hp);
 /*更新货架*/
 void update_shelf(int type,SHHEAD *hp);
 
+/*为机器人设定目标点*/
+void setRobotPoint(Robot *robot, int id, int pointid);
+
 #endif

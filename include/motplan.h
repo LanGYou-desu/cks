@@ -3,7 +3,7 @@
 
 /* 力场参数宏定义 */
 #define ATTRACT_GAIN      0.8f    // 目标引力系数
-#define REPULSE_GAIN     250.0f   // 障碍物斥力系数
+#define REPULSE_GAIN     275.0f   // 障碍物斥力系数
 #define SOCIAL_GAIN      200.0f   // 机器人间斥力系数
 #define REPULSE_RANGE    150      // 斥力作用范围
 #define SMOOTH_FACTOR     0.3f    // 路径平滑系数
@@ -20,7 +20,7 @@
 #define HISTORY_SIZE       5
 #define CHARGE_SPEED     0.5f
 #define MAX_ROBOTS        3
-#define MAX_STEPS     10000
+#define MAX_STEPS       500
 #define IDLE_LIMIT      100
 #define ESCAPE_ATTEMPTS   5
 
@@ -36,8 +36,9 @@ void calculateForces(Robot* robot, float* dx, float* dy);
 void smoothPath(Robot* robot, float* dx, float* dy);
 void moveTowards(Robot* robot, float dx, float dy);
 void handleCharging(Robot* robot);
-void mainLoop();
+void mainLoop(int robonum);
 void all_reach();
+int allRobotsReached();
 float distance(int x1, int y1, int x2, int y2);
 float fminf(float a,float b);
 float fmaxf(float a,float b);

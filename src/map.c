@@ -3,6 +3,7 @@
 OBS obs[6];
 SHELFPOINT shelfpoint[3];
 LIFT lift[4];
+POINT point[10];
 
 int map_preview(int *flag)
 {
@@ -91,11 +92,50 @@ void init_lift()
     lift[0].x=219;
     lift[0].y=398;
     /*二类货架*/
-    lift[1].x=807;
+    lift[1].x=555;
     lift[1].y=398;
     lift[2].x=471;
     lift[2].y=398;
     /*三类货架*/
     lift[3].x=807;
     lift[3].y=398;
+}
+
+void init_mappoint()
+{
+    //机器人出生位前
+    point[0].x=331;
+    point[0].y=641;
+
+    //出入口左
+    point[1].x=427;
+    point[1].y=665;
+
+    //出入口右
+    point[2].x=600;
+    point[2].y=665;
+
+    //充电站左
+    point[3].x=427;
+    point[3].y=130;
+
+    //充电站右
+    point[4].x=600;
+    point[4].y=130;
+
+    //一号货架升降机
+    point[5].x=245;
+    point[5].y=398;
+
+    //二号货架升降机1
+    point[6].x=445;
+    point[6].y=398;
+
+    //二号货架升降机2
+    point[7].x=581;
+    point[7].y=398;
+
+    //三号货架升降机
+    point[8].x=780;
+    point[8].y=398;
 }

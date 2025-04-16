@@ -15,6 +15,7 @@ typedef struct Robot {
     int same_pos_count;    // 相同位置计数器
     float battery;         // 剩余电量（0-100）
     int cargo_type;        // 携带货物类型
+    int reached;           // 是否到达目标
     int state;             // 0-工作中 1-前往充电 2-充电中
     FILE* logfile;         // 日志文件指针
     struct Robot* next;    // 链表指针

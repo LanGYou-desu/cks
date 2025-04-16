@@ -74,9 +74,21 @@ void free_robolist(ROHEAD *hp)
 
 void turn_list(ROHEAD *hp,Robot *robot)
 {
+    int i;
     RONODE *p1 = hp->head;
     Robot *p2 = robot;
     char fname[30];
+
+    char removefile[3][30]={
+        "C:\\cks\\path\\robot1.log",
+        "C:\\cks\\path\\robot2.log",
+        "C:\\cks\\path\\robot3.log"
+    };
+    //删除原有日志文件
+    for(i=0;i<3;i++)
+    {
+        remove(removefile[i]);
+    }
 
     while (p1 != NULL)
     {
@@ -135,6 +147,7 @@ Robot* createRoboList(ROHEAD *hp)
     head->escape_count = 0;
     head->same_pos_count = 0;
     head->battery = 0;
+    head->reached = 0;
     head->state = 0; // 初始状态为工作中
     head->logfile = NULL;
     head->next = NULL;
@@ -165,6 +178,7 @@ Robot* createRoboList(ROHEAD *hp)
         p->escape_count = 0;
         p->same_pos_count = 0;
         p->battery = 0;
+        p->reached = 0;
         p->state = 0; // 初始状态为工作中
         p->logfile = NULL;
         p->next = NULL;

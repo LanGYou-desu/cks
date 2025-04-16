@@ -25,6 +25,12 @@ typedef struct{
     int y;
 }LIFT;
 
+/*路径节点*/
+typedef struct{
+    int x;
+    int y;
+}POINT;
+
 /*地图预览*/
 int map_preview(int *flag);
 
@@ -42,5 +48,8 @@ void init_shelfpoint();
 
 /*初始化升降机位置*/
 void init_lift();
+
+/*初始化节点*/
+void init_mappoint();
 
 #endif
