@@ -1,2 +1,2 @@
-我应该如何在borland c中完成一个有效的的路径规划? 
-How can I finish an effective Path Planning in borland c?
+我应该如何在borland c将路径规划应用到多段机器人运动模拟中？
+How can I apply my Path Planning to Robot Move Mock in Borland C?
