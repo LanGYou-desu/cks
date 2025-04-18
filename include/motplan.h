@@ -3,8 +3,8 @@
 
 /* 力场参数宏定义 */
 #define ATTRACT_GAIN     30.0f    // 目标引力系数
-#define REPULSE_GAIN     200.0f   // 障碍物斥力系数
-#define SOCIAL_GAIN      150.0f   // 机器人间斥力系数
+#define REPULSE_GAIN     210.0f   // 障碍物斥力系数
+#define SOCIAL_GAIN      140.0f   // 机器人间斥力系数
 #define REPULSE_RANGE    100      // 斥力作用范围
 #define SMOOTH_FACTOR     0.3f    // 路径平滑系数
 #define RANDOM_ANGLE      0.5f    // 随机扰动角度(弧度)

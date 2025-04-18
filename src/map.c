@@ -77,13 +77,13 @@ void init_obs()
 void init_shelfpoint()
 {
     /*一类货架*/
-    shelfpoint[0].x=178;
+    shelfpoint[0].x=177;
     shelfpoint[0].y=231;
     /*二类货架*/
-    shelfpoint[1].x=513;
+    shelfpoint[1].x=512;
     shelfpoint[1].y=231;
     /*三类货架*/
-    shelfpoint[2].x=849;
+    shelfpoint[2].x=848;
     shelfpoint[2].y=231;
 }
 
