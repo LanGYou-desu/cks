@@ -3,6 +3,7 @@
 int auto_in(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
 {
     int key;
+    int select_flag = 0;
     int robonum = rohp->length;
     
     Robot *robot = createRoboList(rohp);
@@ -21,10 +22,35 @@ int auto_in(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
         {
             key=getch();
         }
-        if(key==0X0D)//
+        if(key==0X0D)//»Ø³µ¼ü
         {
 
         }
+
+        if(mouse.x>=924&&mouse.y<=50&&select_flag==0)
+        {
+            select_flag=1;
+            draw_selecter();
+        }
+        else if(!(mouse.x>=924&&mouse.y<=100)&&select_flag==1)
+        {
+            select_flag=0;
+            bar1(923,0,1024,100,0XFFFF);
+            draw_mock_select();
+        }
+
+        if(select_flag==1)
+        {
+            if(mouse_press(924,0,1024,50)==1)
+            {
+                //remock();
+            }
+            else if(mouse_press(924,50,1024,100)==1)
+            {
+                //watchMock();
+            }
+        }
+
         if(mouse_press(0,0,100,50)==1)
         {
             *flag=7;
@@ -60,6 +86,8 @@ void draw_auto_in(ROHEAD *rohp)
     Readbmp64k(120,0,"C:\\cks\\image\\maptwo.bmp");
     bar1(0,0,100,50,0X67FC);
     puthz(18,9,"·µ»Ø",32,32,0X0000);
+
+    draw_mock_select();
     
     while(p!=NULL)
     {

@@ -3,6 +3,7 @@
 int auto_out(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
 {
     int key;
+    int select_flag = 0;
     Robot *robot = createRoboList(rohp);
 
     turn_list(rohp, robot);
@@ -24,9 +25,35 @@ int auto_out(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
         {
            
         }
+
+        if(mouse.x>=924&&mouse.y<=50&&select_flag==0)
+        {
+            select_flag=1;
+            draw_selecter();
+        }
+        else if(!(mouse.x>=924&&mouse.y<=100)&&select_flag==1)
+        {
+            select_flag=0;
+            bar1(923,0,1024,100,0XFFFF);
+            draw_mock_select();
+        }
+
+        if(select_flag==1)
+        {
+            if(mouse_press(924,0,1024,50)==1)
+            {
+                //remock();
+            }
+            else if(mouse_press(924,50,1024,100)==1)
+            {
+                //watchMock();
+            }
+        }
+
         if(mouse_press(0,0,100,50)==1)
         {
             *flag=7;
+            turn_list_back(rohp, robot);
             freeRoboList(robot);
             return 0;
         }

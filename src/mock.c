@@ -140,6 +140,22 @@ void draw_hand(int *item)
     put_asc16_size(649,215,3,3,temp,0X0000);
 }
 
+void draw_mock_select()
+{
+    bar1(924,0,1024,50,0X67FC);
+    puthz(942,9,"功能",32,32,0X0000);
+}
+
+void draw_selecter()
+{
+    bar1(924,0,1024,50,0X67FC);
+    Line_Thick(923,50,1024,50,1,0X0000);
+    bar1(924,50,1024,100,0X67FC);
+
+    puthz(926,13,"重新模拟",24,24,0X0000);
+    puthz(926,63,"观看结果",24,24,0X0000);
+}
+
 int judge_mock(int robonum,int *item)
 {
    if(robonum==0||(item[0]==0&&item[1]==0&&item[2]==0))
@@ -194,3 +210,4 @@ void setRobotPoint(Robot *robot, int id, int pointid)
     setTarget(head, point[pointid].x, point[pointid].y);
     robotlist=robot;
 }
+

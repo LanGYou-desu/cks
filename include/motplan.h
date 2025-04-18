@@ -15,7 +15,7 @@
 #define SCREEN_WIDTH    1024
 #define SCREEN_HEIGHT    768
 #define ROBOT_SIZE        50
-#define STEP_BASE          8
+#define STEP_BASE         10
 #define CHARGE_POWER      30
 #define HISTORY_SIZE       5
 #define CHARGE_SPEED     0.5f

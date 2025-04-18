@@ -10,6 +10,10 @@ void draw_mock_menu(int *robonum, int *item);
 /*绘制手动按钮*/
 void draw_hand(int *item);
 
+/*绘制功能选择*/
+void draw_mock_select();
+void draw_selecter();
+
 /*判断是否能模拟*/
 int judge_mock(int robonum, int *item);
 

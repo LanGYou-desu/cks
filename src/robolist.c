@@ -100,6 +100,7 @@ void turn_list(ROHEAD *hp,Robot *robot)
         //创建日志文件
         sprintf(fname, "C:\\cks\\path\\robot%d.log", p2->id);
         p2->logfile = fopen(fname, "a");
+        setvbuf(robot->logfile, NULL, _IONBF, 0); // 无缓冲模式
         if(p2->logfile == NULL) {
             printf("Error: Cannot create log file for robot %d\n", p2->id);
         }

@@ -118,18 +118,18 @@ void init_mappoint()
 
     //充电站左
     point[3].x=427;
-    point[3].y=130;
+    point[3].y=132;
 
     //充电站右
     point[4].x=600;
-    point[4].y=130;
+    point[4].y=132;
 
     //一号货架升降机
     point[5].x=245;
     point[5].y=398;
 
     //二号货架升降机1
-    point[6].x=445;
+    point[6].x=443;
     point[6].y=398;
 
     //二号货架升降机2
