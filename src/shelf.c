@@ -28,7 +28,7 @@ SHHEAD* create_shelflist(SHHEAD* hp,int *item)
         p->shelf.x=shelfpoint[i].x;
         p->shelf.y=shelfpoint[i].y;
 
-        p->shelf.num = item[i];//货架上的物品数量
+        p->shelf.num = 0;
 
         p->shelf.item[0][0] = 0;
         p->shelf.item[0][1] = 0;

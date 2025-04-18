@@ -17,6 +17,9 @@ void draw_selecter();
 /*判断是否能模拟*/
 int judge_mock(int robonum, int *item);
 
+/*随机数*/
+int random_num(void);
+
 /*查找货架节点*/
 SHNODE *find_shelf(int type,SHHEAD *hp);
 

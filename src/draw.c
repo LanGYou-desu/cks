@@ -24,10 +24,20 @@ void draw_robot(int x,int y,int flag)
 	{
 		bar1(x-25,y-25,x+25,y+25,0X62CA);
 	}
-	else
+	else if(flag==1)
 	{
 		bar1(x-25,y-25,x+25,y+25,0X62CA);
-		bar1(x-15,y-15,x+15,y+15,0XCBA4);
+		bar1(x-15,y-15,x+15,y+15,0XFFE9);
+	}
+	else if(flag==2)
+	{
+		bar1(x-25,y-25,x+25,y+25,0X62CA);
+		bar1(x-15,y-15,x+15,y+15,0X67E0);
+	}
+	else if(flag==3)
+	{
+		bar1(x-25,y-25,x+25,y+25,0X62CA);
+		bar1(x-15,y-15,x+15,y+15,0XFE19);
 	}
 }
 
@@ -37,12 +47,48 @@ void draw_item(int x,int y,int type,int floor,int flag)
 
 	rx=x;
 	ry=y+IL*flag;
-	if(floor==0)
+	if(type==1)
 	{
-		bar1(rx-30,ry-30,rx+30,ry+30,0X5A9C);
+		if(floor==0)
+		{
+			bar1(rx-30,ry-30,rx+30,ry+30,0XFFE9);
+		}	
+		else if(floor==1)
+		{
+			bar1(rx-20,ry-20,rx+20,ry+20,0XFC06);
+		}
 	}
-	else if(floor==1)
+	else if(type==2)
 	{
-		bar1(rx-20,ry-20,rx+20,ry+20,0XCBA4);
+		if(floor==0)
+		{
+			bar1(rx-30,ry-30,rx+30,ry+30,0X67E0);
+		}	
+		else if(floor==1)
+		{
+			bar1(rx-20,ry-20,rx+20,ry+20,0XFC06);
+		}
+	}
+	else if(type==3)
+	{
+		if(floor==0)
+		{
+			bar1(rx-30,ry-30,rx+30,ry+30,0XFE19);
+		}	
+		else if(floor==1)
+		{
+			bar1(rx-20,ry-20,rx+20,ry+20,0XFC06);
+		}
+	}
+	else if(type==-1)
+	{
+		if(floor==0)
+		{
+			bar1(rx-30,ry-30,rx+30,ry+30,0XFFFF);
+		}	
+		else if(floor==1)
+		{
+			bar1(rx-20,ry-20,rx+20,ry+20,0XFFFF);
+		}
 	}
 }

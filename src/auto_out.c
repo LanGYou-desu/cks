@@ -110,6 +110,7 @@ void init_item(int *item,SHHEAD *shhp)
                 break;
             }
         }
+        p->shelf.num=item[type];
         p=p->next;
         if(type==2)
         {
@@ -130,12 +131,14 @@ void item_out(SHHEAD *hp,int type)
     }
     else if(p->shelf.num==10)
     {
+        draw_item(p->shelf.x,p->shelf.y,-1,0,4);
         p->shelf.item[1][4]=0;
         p->shelf.num--;
         return;
     }
     else if(p->shelf.item[1][0]==0&&p->shelf.item[0][4]==1)
     {
+        draw_item(p->shelf.x,p->shelf.y,-1,0,4);
         p->shelf.item[0][4]=0;
         p->shelf.num--;
         return;
@@ -148,6 +151,7 @@ void item_out(SHHEAD *hp,int type)
             {
                 if(p->shelf.item[i][j]==1&&p->shelf.item[i][j+1]==0)
                 {
+                    draw_item(p->shelf.x,p->shelf.y,-1,i,j);
                     p->shelf.item[i][j]=0;
                     p->shelf.num--;
                     return;

@@ -168,6 +168,12 @@ int judge_mock(int robonum,int *item)
    }
 }
 
+int random_num()
+{
+    srand((unsigned)time(NULL));    
+    return rand()%3;
+}
+
 SHNODE *find_shelf(int type,SHHEAD *hp)
 {
     SHNODE *p=hp->head;

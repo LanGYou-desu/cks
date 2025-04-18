@@ -124,7 +124,7 @@ void item_in(SHHEAD *hp,int type)
         {
             for(j=1;j<5;j++)
             {
-                if(p->shelf.item[i][j]==1&&p->shelf.item[i][j-1]==0)
+                if(p->shelf.item[i][j]==0&&p->shelf.item[i][j-1]==1)
                 {
                     p->shelf.item[i][j]=1;
                     p->shelf.num++;

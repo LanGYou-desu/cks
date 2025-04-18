@@ -2,16 +2,24 @@
 
 int mock_handin(int *flag,int *item)
 {
-    ROBO rob;
+    int i;
     int t;
+    int random;
     char key;
     char temp[4];
+    int titem[3];
     SHHEAD *shhp;
+    ROBO rob;
     
     rob.x=308;
     rob.y=710;
     rob.flag=0;
     rob.energy=100;
+
+    for(i=0;i<3;i++)
+    {
+        titem[i]=item[i];
+    }
 
     mouse_off(&mouse);
     draw_mock_hand();
@@ -48,18 +56,38 @@ int mock_handin(int *flag,int *item)
             }   
             if((rob.x>386&&rob.x<640)&&(rob.y>661&&rob.y<751)&&rob.flag==0)//入口
             {
-                rob.flag=1;
+                while(1)
+                {
+                    random=random_num();
+                    if(titem[0]==0&&titem[1]==0&&titem[2]==0)
+                    {
+                        rob.flag=0;
+                        break;
+                    }
+
+                    if(titem[random]==0)
+                    {
+                        continue;
+                    }
+                    else if(titem[random]>0)
+                    {
+                        rob.flag=random+1;
+                        break;
+                    }
+                    
+                }
                 draw_robot(rob.x,rob.y,rob.flag);
             }
         }
+
         if(rob.energy<=0)//能量耗尽
         {
+            delay(1000);
             bar1(0,0,1024,768,0XFFFF);
             Readbmp64k(0,0,"C:\\cks\\image\\bg.bmp");
             put_asc16_size(300,300,4,4,"Energy is over",0X0000);
-            put_asc16_size(188,400,4,4,"Press any key to exit",0X0000);
+            put_asc16_size(188,400,4,4,"Wait a moment to exit",0X0000);
             delay(1500);
-            getch();
             *flag=7;
             return 0;
         }
@@ -96,19 +124,68 @@ int mock_handin(int *flag,int *item)
                 rob.energy-=0.1;
             }
         }
+
+        if(rob.flag!=0)
+        {
+            if((rob.y>=355&&rob.y<=439)&&(rob.x>=219&&rob.x<=249)&&rob.flag==1)
+            {
+                rob.flag=0;
+                titem[0]--;
+                item_in(shhp,1);
+                update_shelf(1,shhp);
+                draw_robot(rob.x,rob.y,rob.flag);
+            }
+            else if((rob.y>=355&&rob.y<=439)&&(rob.x>=441&&rob.x<=471)&&rob.flag==2)
+            {
+                rob.flag=0;
+                titem[1]--;
+                item_in(shhp,2);
+                update_shelf(2,shhp);
+                draw_robot(rob.x,rob.y,rob.flag);
+            }
+            else if((rob.y>=355&&rob.y<=439)&&(rob.x>=555&&rob.x<=585)&&rob.flag==2)
+            {
+                rob.flag=0;
+                titem[1]--;
+                item_in(shhp,2);
+                update_shelf(2,shhp);
+                draw_robot(rob.x,rob.y,rob.flag);
+            }
+            else if((rob.y>=355&&rob.y<=439)&&(rob.x>=777&&rob.x<=807)&&rob.flag==3)
+            {
+                rob.flag=0;
+                titem[2]--;
+                item_in(shhp,3);
+                update_shelf(3,shhp); 
+                draw_robot(rob.x,rob.y,rob.flag);
+            }
+        }
+
+        if(titem[0]==0&&titem[1]==0&&titem[2]==0)
+        {
+            draw_robot(rob.x,rob.y,0);
+            delay(1000);
+            bar1(0,0,1024,768,0XFFFF);
+            Readbmp64k(0,0,"C:\\cks\\image\\bg.bmp");
+            puthz(416,360,"模拟结束",48,48,0X0000);
+            delay(1500);
+            *flag=7;
+            return 0;
+        }
     }
 }
 
 int mock_handout(int *flag,int *item)
 {
-    ROBO rob;
     int t;
     char key;
     char temp[4];
+    int titem[3]={0};
+    ROBO rob;
     SHHEAD *shhp;
     
     rob.x=308;
-    rob.y=646;
+    rob.y=710;
     rob.flag=0;
     rob.energy=100;
 
@@ -147,20 +224,33 @@ int mock_handout(int *flag,int *item)
                 put_asc16_size(847,20,3,3,temp,0X0000);
                 delay(50);
             }   
-            else if((rob.x>386&&rob.x<640)&&(rob.y>661&&rob.y<751)&&rob.flag==0)//入口
+            else if((rob.x>386&&rob.x<640)&&(rob.y>661&&rob.y<751)&&rob.flag!=0)//入口
             {
+                if(rob.flag==1)
+                {
+                    titem[0]++;
+                }
+                else if(rob.flag==2)
+                {
+                    titem[1]++;
+                }
+                else if(rob.flag==3)
+                { 
+                    titem[2]++;
+                }
                 rob.flag=0;
                 draw_robot(rob.x,rob.y,rob.flag);
             }
         }
+
         if(rob.energy<=0)//能量耗尽
         {
+            delay(1000);
             bar1(0,0,1024,768,0XFFFF);
             Readbmp64k(0,0,"C:\\cks\\image\\bg.bmp");
             put_asc16_size(300,300,4,4,"Energy is over",0X0000);
-            put_asc16_size(188,400,4,4,"Press any key to exit",0X0000);
+            put_asc16_size(188,400,4,4,"Wait a moment to exit",0X0000);
             delay(1500);
-            getch();
             *flag=7;
             return 0;
         }
@@ -196,6 +286,50 @@ int mock_handout(int *flag,int *item)
                 mover(&rob);
                 rob.energy-=0.1;
             }
+        }
+
+        if(rob.flag==0)
+        {
+            if((rob.y>=355&&rob.y<=439)&&(rob.x>=219&&rob.x<=249))
+            {
+                rob.flag=1;
+                item_out(shhp,1);
+                update_shelf(1,shhp);
+                draw_robot(rob.x,rob.y,rob.flag);
+            }
+            else if((rob.y>=355&&rob.y<=439)&&(rob.x>=441&&rob.x<=471))
+            {
+                rob.flag=2;
+                item_out(shhp,2);
+                update_shelf(2,shhp);
+                draw_robot(rob.x,rob.y,rob.flag);
+            }
+            else if((rob.y>=355&&rob.y<=439)&&(rob.x>=555&&rob.x<=585))
+            {
+                rob.flag=2;
+                item_out(shhp,2);
+                update_shelf(2,shhp);
+                draw_robot(rob.x,rob.y,rob.flag);
+            }
+            else if((rob.y>=355&&rob.y<=439)&&(rob.x>=777&&rob.x<=807))
+            {
+                rob.flag=3;
+                item_out(shhp,3);
+                update_shelf(3,shhp); 
+                draw_robot(rob.x,rob.y,rob.flag);
+            }
+        }
+
+        if(titem[0]==item[0]&&titem[1]==item[1]&&titem[2]==item[2])
+        {
+            draw_robot(rob.x,rob.y,0);
+            delay(1000);
+            bar1(0,0,1024,768,0XFFFF);
+            Readbmp64k(0,0,"C:\\cks\\image\\bg.bmp");
+            puthz(416,360,"模拟结束",48,48,0X0000);
+            delay(1500);
+            *flag=7;
+            return 0;
         }
     }
 }
