@@ -10,6 +10,9 @@ void put_inputline(int x,int y,int len);
 /*画出按钮*/
 void draw_button(int x1,int y1,int x2,int y2);
 
+/*显示光标*/
+void show_gb(int x,int y);
+
 /*画出机器人*/
 void draw_robot(int x,int y,int flag);   
 

@@ -25,6 +25,7 @@
 
 #include"BMP.h"
 
+#include"encrypt.h"
 #include"map.h"
 #include"draw.h"
 #include"robolist.h"

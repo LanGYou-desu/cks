@@ -173,15 +173,6 @@ void draw_login()
 	draw_commoninput(325,425,380,"请输入密码");
 }
 
-
-/***画光标函数***/
-void show_gb(int x,int y)
-{
-	Line1(x,y-3,x,y+29,0);
-}
-
-
-
 /***获取用户名函数***/
 void Getinfo(int x1,int y1,char *name,int num,int a1,int b1,int c1,int d1)//x1,y1为输入框左上角坐标，name为存放输入字符串的数组，num为数组长度
 {
@@ -285,10 +276,6 @@ void Getinfo(int x1,int y1,char *name,int num,int a1,int b1,int c1,int d1)//x1,y
 	} 
 	bar1(border,y1,border+8, y1+32, 0xffff);//清空光标位置
 }
-
-
-
-
 
 /* 获取密码函数 */
 void Getcode(int x1,int y1,char *code,int num,int a1,int b1,int c1,int d1)//x1,y1为输入框左上角坐标，name为存放输入字符串的数组，num为数组长度
@@ -406,93 +393,4 @@ void Getcode(int x1,int y1,char *code,int num,int a1,int b1,int c1,int d1)//x1,y
 		}
 	}
 	bar1(border,y1-3,border+16, y1+29, 0xffff);
-}
-
-
-/**********************
-功能说明：保存用户信息函数 
-参数说明：用户结构体 
-返回值说明:0：保存成功   -1： 保存失败 
-**********************/
-int save_user(USER temp)
-{
-    if (repeat_user("C://cks/user/user.dat", temp.account) == 1) {
-        FILE *fp = fopen("C://cks/user/user.dat", "a");
-        if (fp == NULL) {
-            prt_hz24(410, 380, "无法打开文件！", 10, "HZK\\Hzk24h");
-            return -1;
-        }
-        fprintf(fp, "%s %s\n", temp.account, temp.password);
-        fclose(fp);
-        return 0;
-    } 
-	else if(repeat_user("C://cks/user/user.dat", temp.account) == 0){
-        prt_hz24(420, 380, "用户已存在！", 10, "HZK\\Hzk24h");
-        return -1;
-    }
-}
-
-
-/********************************************
-功能说明：登录信息对比校验函数 
-参数说明：用户线性表，用户名，密码 
-返回值说明:0:  有该用户，且密码正确   -1： 用户不存在或密码错误
-**********************/
-int Check_info(const char *filename, char *account, char *password)
-{
-    char line[40];
-    char expected[40];
-
-    FILE *fp = fopen(filename, "r");
-    if (fp == NULL) {
-        return -1; // 文件不存在，用户不存在
-    }
-
-    strcpy(expected, account);
-    strcat(expected, " ");
-    strcat(expected, password);
-    strcat(expected, "\n");
-
-    while (fgets(line, sizeof(line), fp) != NULL) {
-        if (strcmp(line, expected) == 0) {
-            fclose(fp);
-            return 0; // 找到匹配用户
-        }
-    }
-
-    fclose(fp);
-    return -1; // 用户不存在或密码错误
-}
-
-/********************************************
-功能说明：重复注册校验函数
-参数说明：用户线性表，用户名 
-返回值说明:0:  有该用户   1： 无该用户
-**********************/
-int repeat_user(const char* filename, char *account)
-{
-    int i = 0;
-    char line[40];
-    char temp[20];
-    FILE *fp = fopen(filename, "r");
-    if (fp == NULL) {
-        return 1; // 文件打开失败，假设用户不存在
-    }
-    while (fgets(line, sizeof(line), fp) != NULL)
-    {
-        i = 0;
-        while (line[i] != ' ' && line[i] != '\0' && line[i] != '\n')
-        {
-            temp[i] = line[i];
-            i++;
-        }
-        temp[i] = '\0'; // 确保字符串以 '\0' 结尾
-        if (strcmp(temp, account) == 0)
-        {
-            fclose(fp);
-            return 0; // 找到匹配用户
-        }
-    }
-    fclose(fp);
-    return 1; // 未找到匹配用户
 }

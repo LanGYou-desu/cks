@@ -10,6 +10,7 @@
         "SVGA.C": "cpp",
         "BMP.C": "cpp",
         "allfunc.h": "c",
-        "welcome.h": "c"
+        "welcome.h": "c",
+        "encrypt.h": "c"
     }
 }

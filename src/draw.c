@@ -18,6 +18,11 @@ void draw_button(int x1,int y1,int x2,int y2)
 	Circlefill(x2-45,(y1+y2)/2,(y2-y1)/2,0X67FC);
 }
 
+void show_gb(int x,int y)
+{
+	Line1(x,y-3,x,y+29,0);
+}
+
 void draw_robot(int x,int y,int flag)
 {
 	if(flag==0)
