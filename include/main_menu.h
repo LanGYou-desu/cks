@@ -10,4 +10,7 @@ int main_menu(int *flag,int *robonum,int *item);
 /*绘制返回确认界面*/
 void draw_return_comfirm(int i);
 
+/*生成报告*/
+void report();
+
 #endif

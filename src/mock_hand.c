@@ -19,6 +19,7 @@ int mock_handin(int *flag,int *item)
     for(i=0;i<3;i++)
     {
         titem[i]=item[i];
+        statistics_in[i]=statistics_in[i]+item[i];
     }
 
     mouse_off(&mouse);
@@ -177,6 +178,7 @@ int mock_handin(int *flag,int *item)
 
 int mock_handout(int *flag,int *item)
 {
+    int i;
     int t;
     char key;
     char temp[4];
@@ -188,6 +190,11 @@ int mock_handout(int *flag,int *item)
     rob.y=710;
     rob.flag=0;
     rob.energy=100;
+
+    for(i=0;i<3;i++)
+    {
+        statistics_out[i]=statistics_out[i]+item[i];
+    }
 
     mouse_off(&mouse);
     draw_mock_hand();

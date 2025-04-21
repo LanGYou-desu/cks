@@ -2,11 +2,17 @@
 
 int auto_out(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
 {
+    int i;
     int key;
     int select_flag = 0;
     Robot *robot = createRoboList(rohp);
 
     turn_list(rohp, robot);
+
+    for(i=0;i<3;i++)
+    {
+        statistics_out[i]=statistics_out[i]+item[i];
+    }
 
     mouse_off(&mouse);
     draw_auto_out(rohp);

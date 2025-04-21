@@ -2,12 +2,18 @@
 
 int auto_in(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
 {
+    int i;
     int key;
     int select_flag = 0;
     int robonum = rohp->length;
     
     Robot *robot = createRoboList(rohp);
     turn_list(rohp, robot);
+
+    for(i=0;i<3;i++)
+    {
+        statistics_in[i]=statistics_in[i]+item[i];
+    }
 
     mouse_off(&mouse);
     draw_auto_in(rohp);

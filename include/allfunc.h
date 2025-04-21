@@ -84,14 +84,19 @@
 #define NINE 0x0a39
 #define ZERO 0x0b30
 
-extern MOUSE mouse;//声明全局变量，本项目工程共用同一个鼠标结构，故每个（需要鼠标的）文件都应包含
-extern int login_flag;//登录标志
-extern auto_flag;//自动标志
-extern OBS obs[6];//障碍物
-extern POINT point[10];//路径节点
-extern SHELFPOINT shelfpoint[3];//货架坐标
-extern LIFT lift[4];//升降台
+extern MOUSE mouse;              //声明全局变量，本项目工程共用同一个鼠标结构，故每个（需要鼠标的）文件都应包含
 
-extern Robot* robotlist; // 机器人链表头指针
+extern int login_flag;           //登录标志
+extern auto_flag;                //自动标志
+
+extern OBS obs[6];               //障碍物
+extern POINT point[10];          //路径节点
+extern SHELFPOINT shelfpoint[3]; //货架坐标
+extern LIFT lift[4];             //升降台
+
+extern Robot* robotlist;         //机器人链表头指针
+
+extern int statistics_in[3];     //统计入库数据
+extern int statistics_out[3];    //统计出库数据
 
 #endif
