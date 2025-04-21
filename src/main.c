@@ -52,6 +52,9 @@ int main()
             case 10:map_preview(&flag);//地图预览界面
                     break;
 
+            case 11:introduction(&flag);//程序介绍界面
+                    break;
+ 
             case 12:mock_handin(&flag,item);//手动模拟入库界面
                     break;
                 

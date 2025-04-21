@@ -33,6 +33,7 @@
 #include"welcome.h"
 #include"login.h"
 #include"main_menu.h"
+#include"introd.h"
 #include"input.h"
 #include"robonum.h"
 #include"item.h"
