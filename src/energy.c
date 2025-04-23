@@ -43,19 +43,19 @@ void draw_energy_monitor(int *flag,ROHEAD *rohp)
 
     if(rohp->length==1)
     {
-        Readbmp64k(396,100,"C:\\cks\\image\\robot.bmp");
+        Readbmp64k(396,100,"image\\robot.bmp");
         show_energy(rohp);
     }
     else if(rohp->length==2)
     {
-        Readbmp64k(186,100,"C:\\cks\\image\\drobot.bmp");
+        Readbmp64k(186,100,"image\\drobot.bmp");
         show_energy(rohp);
     }
     else if(rohp->length==3)
     {
-        Readbmp64k(82,100,"C:\\cks\\image\\robot.bmp");
-        Readbmp64k(396,100,"C:\\cks\\image\\robot.bmp");
-        Readbmp64k(710,100,"C:\\cks\\image\\robot.bmp");
+        Readbmp64k(82,100,"image\\robot.bmp");
+        Readbmp64k(396,100,"image\\robot.bmp");
+        Readbmp64k(710,100,"image\\robot.bmp");
         show_energy(rohp);
     }
     else

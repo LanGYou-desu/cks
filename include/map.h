@@ -31,12 +31,6 @@ typedef struct{
     int y;
 }POINT;
 
-/*地图预览*/
-int map_preview(int *flag);
-
-/*绘制地图预览界面*/
-void draw_map_preview();
-
 /*初始化地图*/
 void init_map();
 

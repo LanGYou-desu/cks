@@ -70,6 +70,6 @@ void freeRoboList(Robot* head);
 Robot* findRobot(Robot* head, int id);
 
 //修改目标坐标
-void satTarget(Robot *p, int tx, int ty);
+void setTarget(Robot *p, int tx, int ty);
 
 #endif

@@ -2,7 +2,7 @@
 
 int auto_flag=1;
 
-int mock_menu(int *flag,int *robonum,int *item,ROHEAD *rohp,SHHEAD*shhp)
+int mock_menu(int *flag,int *robonum,int *item,ROHEAD *rohp,SHHEAD *shhp)
 {
     auto_flag=1;
     
@@ -84,7 +84,7 @@ void draw_mock_menu(int *robonum,int *item)
     char temp[3];
     
     bar1(0,0,1024,768,0XFFFF);
-    Readbmp64k(0,0,"C:\\cks\\image\\bg.bmp");
+    Readbmp64k(0,0,"image\\bg.bmp");
     bar1(0,0,100,50,0X67FC);
 
     draw_button(374,335,653,430);
@@ -116,7 +116,7 @@ void draw_hand(int *item)
     char temp[3];
 
     bar1(0,0,1024,768,0XFFFF);
-    Readbmp64k(0,0,"C:\\cks\\image\\bg.bmp");
+    Readbmp64k(0,0,"image\\bg.bmp");
     bar1(0,0,100,50,0X67FC);
 
     draw_button(374,335,653,430);
@@ -151,9 +151,12 @@ void draw_selecter()
     bar1(924,0,1024,50,0X67FC);
     Line_Thick(923,50,1024,50,1,0X0000);
     bar1(924,50,1024,100,0X67FC);
+    Line_Thick(923,100,1024,100,1,0X0000);
+    bar1(924,100,1024,150,0X67FC);
 
     puthz(926,13,"重新模拟",24,24,0X0000);
     puthz(926,63,"观看结果",24,24,0X0000);
+    puthz(926,113,"显示轨迹",24,24,0X0000);
 }
 
 int judge_mock(int robonum,int *item)
@@ -192,8 +195,14 @@ void update_shelf(int type,SHHEAD *hp)
 {
     int i,j;
     int temp;
-    SHNODE *p=find_shelf(type,hp);
+    SHNODE *p=NULL;
 
+    if(type==0)
+    {
+        return;
+    }
+
+    p=find_shelf(type,hp);
     temp=p->shelf.num;
 
 	for(i=0;i<2;i++)
@@ -217,3 +226,85 @@ void setRobotPoint(Robot *robot, int id, int pointid)
     robotlist=robot;
 }
 
+void draw_trace(int robonum)
+{
+    int color=1;
+    int i=0,j=0;
+    int x=0,y=0;    //坐标
+    int px=0,py=0;  //上一个坐标
+    FILE *fp;
+    char tracefile[3][30]={
+        "path\\robot1.log",
+        "path\\robot2.log",
+        "path\\robot3.log"
+    };
+
+    for(i=0;i<robonum;i++)
+    {
+        fp=fopen(tracefile[i],"r");
+        if(fp==NULL)
+        {
+            printf("文件打开失败！\n");
+            return;
+        }
+        if(color==1)
+        {
+            while(fscanf(fp,"%d,%d",&x,&y)!=EOF)
+            {
+                if(j==0)
+                {
+                    px=x;
+                    py=y;
+                    j++;
+                }
+                else
+                {
+                    Line_Thick(px,py,x,y,2,0XE126);
+                    px=x;
+                    py=y;
+                }
+                delay(1);
+            }
+        }
+        else if(color==2)
+        {
+            while(fscanf(fp,"%d,%d",&x,&y)!=EOF)
+            {
+                if(j==0)
+                {
+                    px=x;
+                    py=y;
+                    j++;
+                }
+                else
+                {
+                    Line_Thick(px,py,x,y,2,0X0235);
+                    px=x;
+                    py=y;
+                }
+                delay(1);
+            }
+        }
+        else if(color==3)
+        {
+            while(fscanf(fp,"%d,%d",&x,&y)!=EOF)
+            {
+                if(j==0)
+                {
+                    px=x;
+                    py=y;
+                    j++;
+                }
+                else
+                {
+                    Line_Thick(px,py,x,y,2,0X13A6);
+                    px=x;
+                    py=y;
+                }
+                delay(1);
+            }
+        }
+        color++;
+        fclose(fp);
+    }
+}

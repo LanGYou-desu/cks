@@ -1,0 +1,8 @@
+"filename", "language", "C", "Log", "comment", "blank", "total"
+"d:\Borland C++\DISK_C\cks\path\ROBOT1.LOG", "Log", 0, 1237, 0, 0, 1237
+"d:\Borland C++\DISK_C\cks\path\ROBOT2.LOG", "Log", 0, 1236, 0, 0, 1236
+"d:\Borland C++\DISK_C\cks\path\ROBOT3.LOG", "Log", 0, -883, 0, -1, -884
+"d:\Borland C++\DISK_C\cks\src\auto_in.c", "C", 15, 0, 8, 8, 31
+"d:\Borland C++\DISK_C\cks\src\auto_out.c", "C", 1, 0, 0, 0, 1
+"d:\Borland C++\DISK_C\cks\src\map.c", "C", 4, 0, 1, 0, 5
+"Total", "-", 20, 1590, 9, 7, 1626

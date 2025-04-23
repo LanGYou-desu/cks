@@ -85,7 +85,7 @@ int mock_handin(int *flag,int *item)
         {
             delay(1000);
             bar1(0,0,1024,768,0XFFFF);
-            Readbmp64k(0,0,"C:\\cks\\image\\bg.bmp");
+            Readbmp64k(0,0,"image\\bg.bmp");
             put_asc16_size(300,300,4,4,"Energy is over",0X0000);
             put_asc16_size(188,400,4,4,"Wait a moment to exit",0X0000);
             delay(1500);
@@ -167,7 +167,7 @@ int mock_handin(int *flag,int *item)
             draw_robot(rob.x,rob.y,0);
             delay(1000);
             bar1(0,0,1024,768,0XFFFF);
-            Readbmp64k(0,0,"C:\\cks\\image\\bg.bmp");
+            Readbmp64k(0,0,"image\\bg.bmp");
             puthz(416,360,"模拟结束",48,48,0X0000);
             delay(1500);
             *flag=7;
@@ -254,7 +254,7 @@ int mock_handout(int *flag,int *item)
         {
             delay(1000);
             bar1(0,0,1024,768,0XFFFF);
-            Readbmp64k(0,0,"C:\\cks\\image\\bg.bmp");
+            Readbmp64k(0,0,"image\\bg.bmp");
             put_asc16_size(300,300,4,4,"Energy is over",0X0000);
             put_asc16_size(188,400,4,4,"Wait a moment to exit",0X0000);
             delay(1500);
@@ -332,7 +332,7 @@ int mock_handout(int *flag,int *item)
             draw_robot(rob.x,rob.y,0);
             delay(1000);
             bar1(0,0,1024,768,0XFFFF);
-            Readbmp64k(0,0,"C:\\cks\\image\\bg.bmp");
+            Readbmp64k(0,0,"image\\bg.bmp");
             puthz(416,360,"模拟结束",48,48,0X0000);
             delay(1500);
             *flag=7;
@@ -344,7 +344,7 @@ int mock_handout(int *flag,int *item)
 void draw_mock_hand()
 {
     bar1(0,0,1024,768,0XFFFF);
-    Readbmp64k(120,0,"C:\\cks\\image\\maptwo.bmp");
+    Readbmp64k(120,0,"image\\maptwo.bmp");
     
     bar1(0,0,100,50,0X67FC);
     put_asc16_size(26,10,2,2,"ESC",0X0000);
@@ -373,7 +373,7 @@ int judge_obs(int x, int y)
     int ry1 = y - (25 + FL);  // 使用宏 FL 计算坐标
     int rx2 = x + 25;
     int ry2 = y + (25 - FL);
-    for (i = 0; i < 6; i++) 
+    for (i = 0; i < 7; i++) 
     {
         if (isCollision(rx1, ry1, rx2, ry2, obs[i])) return 1;
     }
@@ -381,7 +381,7 @@ int judge_obs(int x, int y)
     // 检查向下移动（y正方向）
     ry1 = y - (25 - FL);
     ry2 = y + (25 + FL);
-    for (i = 0; i < 6; i++) 
+    for (i = 0; i < 7; i++) 
     {
         if (isCollision(rx1, ry1, rx2, ry2, obs[i])) return 2;
     }
@@ -391,7 +391,7 @@ int judge_obs(int x, int y)
     rx2 = x + (25 - FL);
     ry1 = y - 25;
     ry2 = y + 25;
-    for (i = 0; i < 6; i++) 
+    for (i = 0; i < 7; i++) 
     {
         if (isCollision(rx1, ry1, rx2, ry2, obs[i])) return 3;
     }
@@ -399,7 +399,7 @@ int judge_obs(int x, int y)
     // 检查向右移动（x正方向）
     rx1 = x - (25 - FL);
     rx2 = x + (25 + FL);
-    for (i = 0; i < 6; i++) 
+    for (i = 0; i < 7; i++) 
     {
         if (isCollision(rx1, ry1, rx2, ry2, obs[i])) return 4;
     }

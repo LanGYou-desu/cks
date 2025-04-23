@@ -108,7 +108,7 @@ int main_menu(int *flag,int *robonum,int *item)
                 }
             }
         }
-        else if(mouse_press(717,400,914,500))
+        else if(mouse_press(717,400,914,500)==1&&login_flag==1)
         {
             mouse_off(&mouse);
             draw_return_comfirm(2);
@@ -127,6 +127,14 @@ int main_menu(int *flag,int *robonum,int *item)
                 }
             }
         }
+        else if(mouse_press(717,400,914,500)==1&&login_flag==0)
+        {
+            bar1(0,0,1024,768,0XFFFF);
+            Readbmp64k(0,0,"image\\bg.bmp");
+            puthz(410,360,"请登录后使用",32,32,0X0000);
+            delay(1500);
+            return 0;
+        }
     }
 }
 
@@ -139,8 +147,8 @@ void draw_main_menu()
     itoa(statistics_out[0]+statistics_out[1]+statistics_out[2],str2,10);
 
     bar1(0,0,1024,768,0XFFFF);
-    Readbmp64k(0,0,"C:\\cks\\image\\bg.bmp");
-    Readbmp64k(150,50,"C:\\cks\\image\\nijika.bmp");
+    Readbmp64k(0,0,"image\\bg.bmp");
+    Readbmp64k(150,50,"image\\nijika.bmp");
     bar1(0,750,100,768,0X67FC);
     
     bar1(0,0,100,50,0X67FC);
@@ -196,7 +204,7 @@ void draw_main_menu()
 void draw_return_comfirm(int i)
 {
     bar1(0,0,1024,768,0XFFFF);
-    Readbmp64k(0,0,"C:\\cks\\image\\bg.bmp");
+    Readbmp64k(0,0,"image\\bg.bmp");
 
     bar1(331,415,470,460,0X67FC);
     bar1(546,415,685,460,0X67FC);
@@ -220,7 +228,7 @@ void draw_return_comfirm(int i)
 void report()
 {
     FILE *fp;
-    fp = fopen("C:\\cks\\report\\report.txt","w");
+    fp = fopen("report\\report.txt","w");
     setvbuf(fp, NULL, _IONBF, 0); // 无缓冲模式
     if(fp == NULL)
     {

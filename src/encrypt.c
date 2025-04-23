@@ -1,38 +1,46 @@
 #include"allfunc.h"
 
 // 循环左移n位
-unsigned char rotate_left(unsigned char byte, int n) {
+unsigned char rotate_left(unsigned char byte, int n) 
+{
     return (byte << n) | (byte >> (8 - n));
 }
 
 // 循环右移n位
-unsigned char rotate_right(unsigned char byte, int n) {
+unsigned char rotate_right(unsigned char byte, int n) 
+{
     return (byte >> n) | (byte << (8 - n));
 }
 
 // 加密字符串（确保加密后无\0）
 void encrypt_string(unsigned char *str, unsigned char key) {
+
     int i;
     int len = strlen(str) + 1; // 包含终止符\0
-    for (i = 0; i < len; i++) {
+    for (i = 0; i < len; i++) 
+    {
         // 加密操作：左移3位 + 异或密钥
         str[i] = rotate_left(str[i], 3);
         str[i] ^= key;
         
         // 避免加密后出现0x00：若为0x00，替换为0xFF（可自定义）
-        if (str[i] == '\n') {
+        if (str[i] == '\n') 
+        {
             str[i] = 0xFF; // 解密时需还原
         }
     }
 }
 
 // 解密字符串（还原加密时的0x00）
-void decrypt_string(unsigned char *str, unsigned char key) {
+void decrypt_string(unsigned char *str, unsigned char key) 
+{
     int i;
     int len = strlen(str) + 1; // 加密后的字符串长度可能不准确，需提前记录
-    for (i = 0; i < len; i++) {
+    for (i = 0; i < len; i++) 
+    {
         // 还原加密时的0x00替换
-        if (str[i] == 0xFF) {
+        if (str[i] == 0xFF) 
+        {
             str[i] = '\n';
         }
         
@@ -49,9 +57,11 @@ void decrypt_string(unsigned char *str, unsigned char key) {
 **********************/
 int save_user(USER temp)
 {
-    if (repeat_user("C://cks/user/user.dat", temp.account) == 1) {
+    if (repeat_user("C://cks/user/user.dat", temp.account) == 1) 
+    {
         FILE *fp = fopen("C://cks/user/user.dat", "a");
-        if (fp == NULL) {
+        if (fp == NULL) 
+        {
             prt_hz24(410, 380, "无法打开文件！", 10, "HZK\\Hzk24h");
             return -1;
         }
@@ -60,7 +70,8 @@ int save_user(USER temp)
         fclose(fp);
         return 0;
     } 
-	else if(repeat_user("C://cks/user/user.dat", temp.account) == 0){
+	else if(repeat_user("C://cks/user/user.dat", temp.account) == 0)
+    {
         prt_hz24(420, 380, "用户已存在！", 10, "HZK\\Hzk24h");
         return -1;
     }
@@ -78,7 +89,8 @@ int Check_info(const char *filename, char *account, char *password)
     char expected[40];
 
     FILE *fp = fopen(filename, "r");
-    if (fp == NULL) {
+    if (fp == NULL) 
+    {
         return -1; // 文件不存在，用户不存在
     }
 
@@ -89,8 +101,10 @@ int Check_info(const char *filename, char *account, char *password)
     strcat(expected, password);
     strcat(expected, "\n");
 
-    while (fgets(line, sizeof(line), fp) != NULL) {
-        if (strcmp(line, expected) == 0) {
+    while (fgets(line, sizeof(line), fp) != NULL) 
+    {
+        if (strcmp(line, expected) == 0) 
+        {
             fclose(fp);
             return 0; // 找到匹配用户
         }
@@ -111,7 +125,8 @@ int repeat_user(const char* filename, char *account)
     char line[40];
     char temp[20];
     FILE *fp = fopen(filename, "r");
-    if (fp == NULL) {
+    if (fp == NULL) 
+    {
         return 1; // 文件打开失败，假设用户不存在
     }
     while (fgets(line, sizeof(line), fp) != NULL)

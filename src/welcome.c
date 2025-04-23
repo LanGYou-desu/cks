@@ -38,7 +38,7 @@ int welcome(int *flag)
 void draw_welcome()
 {
     bar1(0,0,1024,768,0XFFFF);
-    Readbmp64k(0,0,"C:\\cks\\image\\welcome.bmp");
+    Readbmp64k(0,0,"image\\welcome.bmp");
 
     draw_button(374,335,653,430);
     draw_button(374,465,653,560);
@@ -57,7 +57,7 @@ void draw_welcome()
 void logout(){
     mouse_off(&mouse);
     bar1(0,0,1024,768,0XFFFF);
-    Readbmp64k(0,0,"C:\\cks\\image\\goodbye.bmp");
+    Readbmp64k(0,0,"image\\goodbye.bmp");
     delay(1500);
     exit(0);
 }

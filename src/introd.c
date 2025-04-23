@@ -13,7 +13,7 @@ int introduction(int *flag)
         mouse_show(&mouse);
         if(mouse_press(0,0,100,50)==1)
         {
-            *flag=7;
+            *flag=3;
             return 0;
         }
         
@@ -56,7 +56,7 @@ int introduction(int *flag)
 void draw_introduction()
 {
     bar1(0,0,1024,768,0XFFFF);
-    Readbmp64k(0,0,"C:\\cks\\image\\intro1.bmp");
+    Readbmp64k(0,0,"image\\intro1.bmp");
 
     bar1(0,0,100,50,0X67FC);
     puthz(18,9,"·µ»Ø",32,32,0X0000);
@@ -68,7 +68,7 @@ void draw_introduction()
 void draw_second_introduction()
 {
     bar1(0,0,1024,768,0XFFFF);
-    Readbmp64k(0,0,"C:\\cks\\image\\intro2.bmp");
+    Readbmp64k(0,0,"image\\intro2.bmp");
 
     bar1(0,0,100,50,0X67FC);
     puthz(18,9,"·µ»Ø",32,32,0X0000);
@@ -83,7 +83,7 @@ void draw_second_introduction()
 void draw_third_introduction()
 {
     bar1(0,0,1024,768,0XFFFF);
-    Readbmp64k(0,0,"C:\\cks\\image\\intro3.bmp");
+    Readbmp64k(0,0,"image\\intro3.bmp");
 
     bar1(0,0,100,50,0X67FC);
     puthz(18,9,"·µ»Ø",32,32,0X0000);

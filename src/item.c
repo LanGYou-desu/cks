@@ -116,5 +116,5 @@ void draw_item_menu()
     puthz(456,309,"二类货物",32,32,0X0000);
     puthz(656,309,"三类货物",32,32,0X0000);
 
-    Readbmp64k(25,273,"C:\\cks\\image\\box.bmp");
+    Readbmp64k(25,273,"image\\box.bmp");
 }

@@ -223,7 +223,7 @@ void smoothPath(Robot* robot, float* dx, float* dy)
     }
 }
 
-/* 新增函数：瞬移条件判断 */
+/* 瞬移条件判断 */
 int shouldTeleport(Robot* robot) 
 {
     int charge_x, charge_y;
@@ -281,12 +281,14 @@ void moveTowards(Robot* robot, float dx, float dy)
                 if(robot->state == 1) 
                 {
                     // 对齐充电站中心坐标
-                    robot->x = (obs[4].x1 + obs[4].x2)/2;
+                    robot->x = (obs[4].x1 + obs[4].x2)/2 + 50;
                     robot->y = (obs[4].y1 + obs[4].y2)/2;
                 } 
                 else 
                 {
                     // 普通目标直接传送
+                    robot->prev_x = robot->x; 
+                    robot->prev_y = robot->y;
                     robot->x = robot->tx;
                     robot->y = robot->ty;
                 }
@@ -350,7 +352,7 @@ void moveTowards(Robot* robot, float dx, float dy)
         robot->prev_y = robot->y;
         robot->x = final_x;
         robot->y = final_y;
-        robot->battery -= 0.1f;
+        robot->battery -= 0.05f;
         if(robot->escape_count > 0) 
         {
             robot->escape_count--;
@@ -385,7 +387,7 @@ void moveTowards(Robot* robot, float dx, float dy)
 void handleCharging(Robot* robot) 
 {
     int charge_x = (obs[4].x1 + obs[4].x2)/2;
-    int charge_y = (obs[4].y1 + obs[4].y2)/2;
+    int charge_y = (obs[4].y1 + obs[4].y2)/2 + 55;
     float charge_dist = distance(robot->x, robot->y, charge_x, charge_y);
 
     /* 已到达机器人不处理充电逻辑 */
@@ -470,7 +472,7 @@ void mainLoop(int robonum)
             fflush(current->logfile); // 确保日志文件及时写入
 
             bar1(current->prev_x-25,current->prev_y-25,current->prev_x+25,current->prev_y+25,0XFFFF);
-            draw_robot(current->x,current->y,0);
+            draw_robot(current->x,current->y,current->cargo_type);
 
             /* 状态检测 */
             if(current->x != prev_x || current->y != prev_y) 
@@ -499,12 +501,16 @@ void mainLoop(int robonum)
                 r->x=r->tx;
                 r->y=r->ty;
                 fprintf(r->logfile, "%d,%d\n", r->x, r->y);
+                fflush(r->logfile); // 确保日志文件及时写入
+
+                bar1(r->prev_x-25,r->prev_y-25,r->prev_x+25,r->prev_y+25,0XFFFF);
+                draw_robot(r->x,r->y,r->cargo_type);
                 r = r->next;
             }
             all_reach();
             break;
         }
-        delay(100);
+        delay(1);
     }
 
     /* 最终位置确认写入 */

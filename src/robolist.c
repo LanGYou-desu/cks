@@ -24,7 +24,7 @@ ROHEAD* create_robolist(ROHEAD* hp)
 
         // 初始化节点数据
         p->robot.id = i + 1;// 机器人编号
-        p->robot.x = 340-64*i;
+        p->robot.x = 576-64*i;
         p->robot.y = 710;
         p->robot.flag = 0;
         p->robot.energy = 100;
@@ -80,9 +80,9 @@ void turn_list(ROHEAD *hp,Robot *robot)
     char fname[30];
 
     char removefile[3][30]={
-        "C:\\cks\\path\\robot1.log",
-        "C:\\cks\\path\\robot2.log",
-        "C:\\cks\\path\\robot3.log"
+        "path\\robot1.log",
+        "path\\robot2.log",
+        "path\\robot3.log"
     };
     //删除原有日志文件
     for(i=0;i<3;i++)
@@ -95,10 +95,12 @@ void turn_list(ROHEAD *hp,Robot *robot)
         p2->id = p1->robot.id;
         p2->x = p1->robot.x;
         p2->y = p1->robot.y;
+        p2->tx = p1->robot.x;
+        p2->ty = p1->robot.y;
         p2->battery = p1->robot.energy;
 
         //创建日志文件
-        sprintf(fname, "C:\\cks\\path\\robot%d.log", p2->id);
+        sprintf(fname, "path\\robot%d.log", p2->id);
         p2->logfile = fopen(fname, "a");
         setvbuf(robot->logfile, NULL, _IONBF, 0); // 无缓冲模式
         if(p2->logfile == NULL) {
@@ -117,9 +119,6 @@ void turn_list_back(ROHEAD *hp,Robot *robot)
 
     while (p1 != NULL)
     {
-        p1->robot.id = p2->id;
-        p1->robot.x = p2->x;
-        p1->robot.y = p2->y;
         p1->robot.energy = p2->battery;
         
         p1 = p1->next;

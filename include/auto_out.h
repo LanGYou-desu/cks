@@ -14,6 +14,6 @@ void init_item(int *item,SHHEAD *shhp);
 void item_out(SHHEAD *hp,int type);
 
 /*³ö¿âÄ£Äâ*/
-void path_out(Robot *robot);
+void path_out(Robot *robot, int robonum, int *item, SHHEAD *shhp);
 
 #endif

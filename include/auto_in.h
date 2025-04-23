@@ -11,6 +11,6 @@ void draw_auto_in(ROHEAD *rohp);
 void item_in(SHHEAD *hp,int type);
 
 /*Èë¿âÄ£Äâ*/
-void path_in(Robot *robot, int robonum);
+void path_in(Robot *robot, int robonum, int *item, SHHEAD *shhp);
 
 #endif

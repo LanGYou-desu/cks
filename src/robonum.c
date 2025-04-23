@@ -75,7 +75,7 @@ void draw_robo_menu()
     puthz(18,9,"返回",32,32,0X0000);
     draw_commoninput(470,439,100,"");
     puthz(390,309,"请输入机器人数量：",32,32,0X0000);
-    Readbmp64k(110,200,"C:\\cks\\image\\robot.bmp");
+    Readbmp64k(110,200,"image\\robot.bmp");
 }
 
 char* itoa(int value, char* string, int radix)

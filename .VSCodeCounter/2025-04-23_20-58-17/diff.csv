@@ -1,0 +1,13 @@
+"filename", "language", "Log", "C", "C++", "comment", "blank", "total"
+"d:\Borland C++\DISK_C\cks\include\allfunc.h", "C", 0, 1, 0, 0, 0, 1
+"d:\Borland C++\DISK_C\cks\include\map.h", "C++", 0, 0, -2, -2, -2, -6
+"d:\Borland C++\DISK_C\cks\include\mappv.h", "C++", 0, 0, 5, 2, 3, 10
+"d:\Borland C++\DISK_C\cks\path\ROBOT1.LOG", "Log", -774, 0, 0, 0, 0, -774
+"d:\Borland C++\DISK_C\cks\src\auto_in.c", "C", 0, 15, 0, 0, 2, 17
+"d:\Borland C++\DISK_C\cks\src\auto_out.c", "C", 0, 96, 0, 18, 16, 130
+"d:\Borland C++\DISK_C\cks\src\encrypt.c", "C", 0, 14, 0, 0, 1, 15
+"d:\Borland C++\DISK_C\cks\src\map.c", "C", 0, -23, 0, 0, -4, -27
+"d:\Borland C++\DISK_C\cks\src\mappv.c", "C", 0, 24, 0, 0, 4, 28
+"d:\Borland C++\DISK_C\cks\src\motplan.c", "C", 0, 5, 0, 0, 1, 6
+"d:\Borland C++\DISK_C\cks\src\robolist.c", "C", 0, -3, 0, 0, 0, -3
+"Total", "-", -774, 129, 3, 18, 21, -603

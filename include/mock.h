@@ -29,4 +29,7 @@ void update_shelf(int type,SHHEAD *hp);
 /*为机器人设定目标点*/
 void setRobotPoint(Robot *robot, int id, int pointid);
 
+/*显示轨迹*/
+void draw_trace(int robonum);
+
 #endif

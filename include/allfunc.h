@@ -33,6 +33,7 @@
 #include"welcome.h"
 #include"login.h"
 #include"main_menu.h"
+#include"mappv.h"
 #include"introd.h"
 #include"input.h"
 #include"robonum.h"
@@ -90,7 +91,7 @@ extern int login_flag;           //登录标志
 extern auto_flag;                //自动标志
 
 extern OBS obs[6];               //障碍物
-extern POINT point[10];          //路径节点
+extern POINT point[12];          //路径节点
 extern SHELFPOINT shelfpoint[3]; //货架坐标
 extern LIFT lift[4];             //升降台
 

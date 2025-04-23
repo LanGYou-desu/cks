@@ -3,34 +3,7 @@
 OBS obs[6];
 SHELFPOINT shelfpoint[3];
 LIFT lift[4];
-POINT point[10];
-
-int map_preview(int *flag)
-{
-    mouse_off(&mouse);
-    draw_map_preview();
-    mouse_on(mouse);
-    
-    while(1)
-    {
-        mouse_show(&mouse);
-        if(mouse_press(0,0,100,50) == 1)
-        {
-            *flag = 3;
-            return 0;
-        }
-    }
-    
-    return 0;
-}
-
-void draw_map_preview()
-{
-    bar1(0,0,1024,768,0XFFFF);
-    bar1(0,0,100,50,0X67FC);
-    puthz(18,9,"返回",32,32,0X0000);
-    Readbmp64k(120,0,"C:\\cks\\image\\map.bmp");
-}
+POINT point[12];
 
 void init_map()
 {
@@ -42,11 +15,11 @@ void init_map()
 
 void init_obs()
 {
-    /*入口&出口*/
-    obs[0].x1=386;
-    obs[0].y1=691;
-    obs[0].x2=640;
-    obs[0].y2=751;
+    /*放置*/
+    obs[0].x1=0;
+    obs[0].y1=0;
+    obs[0].x2=0;
+    obs[0].y2=0;
     /*一类货架*/
     obs[1].x1=135;
     obs[1].y1=188;
@@ -72,6 +45,11 @@ void init_obs()
     obs[5].y1=0;
     obs[5].x2=100;
     obs[5].y2=50;
+    /*出入口*/
+    obs[6].x1=386;
+    obs[6].y1=690;
+    obs[6].x2=640;
+    obs[6].y2=751;
 }
 
 void init_shelfpoint()
@@ -139,4 +117,16 @@ void init_mappoint()
     //三号货架升降机
     point[8].x=780;
     point[8].y=398;
+
+    //一号机器人出生位
+    point[9].x=576;
+    point[9].y=710;
+
+    //二号机器人出生位
+    point[10].x=512;
+    point[10].y=710;
+    
+    //三号机器人出生位
+    point[11].x=448;
+    point[11].y=710;
 }

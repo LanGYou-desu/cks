@@ -69,7 +69,7 @@ void reset_shelf(SHHEAD* hp,int *item)
     while (p != NULL) 
     {
         //重置货架上的物品数量
-        p->shelf.num = item[i];
+        p->shelf.num = 0;
         //重置货架上的物品
         p->shelf.item[0][0] = 0;
         p->shelf.item[0][1] = 0;
