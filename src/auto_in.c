@@ -43,10 +43,10 @@ int auto_in(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
             select_flag=1;
             draw_selecter();
         }
-        else if(!(mouse.x>=924&&mouse.y<=200)&&select_flag==1)
+        else if(!(mouse.x>=924&&mouse.y<=250)&&select_flag==1)
         {
             select_flag=0;
-            bar1(923,0,1024,200,0XFFFF);
+            bar1(923,0,1024,250,0XFFFF);
             draw_mock_select();
         }
 
@@ -83,6 +83,13 @@ int auto_in(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
                 draw_auto_in(rohp);
                 init_item(item,shhp);
             }   
+            else if(mouse_press(924,200,1024,250)==1)
+            {
+                quick_charge(rohp);
+                prt_hz24(464,620,"³äµçÍê±Ï£¡",0X0000,"HZK\\Hzk24h");
+                delay(500);
+                bar1(464,620,900,650,0XFFFF);
+            }
         }
 
         if(mouse_press(0,0,100,50)==1)

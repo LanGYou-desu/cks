@@ -113,7 +113,7 @@ void calculateForces(Robot* robot, float* dx, float* dy)
     else if(robot->y>=610&&robot->tx>512)
     {
         *dx=*dx+0.1f;
-        *dy=*dy-0.1f;
+        *dy=*dy+0.1f;
     }
     else if(robot->y<=185&&robot->tx<512)
     {
@@ -123,7 +123,7 @@ void calculateForces(Robot* robot, float* dx, float* dy)
     else if(robot->y<=185&&robot->tx>512)
     {
         *dx=*dx+0.1f;
-        *dy=*dy+0.1f;
+        *dy=*dy-0.1f;
     }
 
     /* ÕÏ°­Îï³âÁ¦ */
@@ -374,7 +374,7 @@ void moveTowards(Robot* robot, float dx, float dy)
         robot->prev_y = robot->y;
         robot->x = final_x;
         robot->y = final_y;
-        robot->battery -= 0.05f;
+        robot->battery -= STEP_POWER;
         if(robot->escape_count > 0) 
         {
             robot->escape_count--;

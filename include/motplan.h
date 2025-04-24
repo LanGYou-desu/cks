@@ -12,9 +12,9 @@
 #define BORDER_RANGE         30       // 边界斥力作用范围
 
 #define TARGET_RADIUS     75          // 目标点有效半径
-#define CHARGE_RADIUS     100         // 充电站有效半径
+#define CHARGE_RADIUS     150         // 充电站有效半径
 #define DAMPING_FACTOR    0.2f        // 近目标阻尼系数
-#define TARGET_RADIUS     100          // 瞬移触发半径
+#define TARGET_RADIUS     100         // 瞬移触发半径
 
 /* 系统常量 */
 #define SCREEN_WIDTH    1024          // 屏幕宽度
@@ -22,9 +22,10 @@
 #define ROBOT_SIZE        50          // 机器人大小
 #define STEP_BASE         10          // 基础步长
 #define CHARGE_POWER      30          // 充电阈值
-#define HISTORY_SIZE       5          // 轨迹历史长度
-#define CHARGE_SPEED     25.0f        // 充电速度
+#define STEP_POWER       0.02f        // 每步能量消耗
+#define CHARGE_SPEED     50.0f        // 充电速度
 #define MAX_ROBOTS         3          // 最大机器人数量
+#define HISTORY_SIZE       5          // 轨迹历史长度
 #define MAX_STEPS        500          // 最大步数
 #define IDLE_LIMIT       100          // 最大空闲时间
 #define ESCAPE_ATTEMPTS    5          // 最大逃避尝试次数

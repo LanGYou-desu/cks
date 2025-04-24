@@ -211,11 +211,14 @@ void draw_selecter()
     bar1(924,100,1024,150,0X67FC);
     Line_Thick(923,150,1024,150,1,0X0000);
     bar1(924,150,1024,200,0X67FC);
+    Line_Thick(923,200,1024,200,1,0X0000);
+    bar1(924,200,1024,250,0X67FC);
 
     puthz(926,13,"重新模拟",24,24,0X0000);
     puthz(926,63,"显示轨迹",24,24,0X0000);
     puthz(926,113,"慢速播放",24,24,0X0000);
     puthz(926,163,"快速播放",24,24,0X0000);
+    puthz(926,213,"快速充电",24,24,0X0000);
 }
 
 int judge_mock(int robonum,int *item)
@@ -476,4 +479,14 @@ void watchMock(int robonum,int speed)
     fclose(fp1);
     fclose(fp2);
     fclose(fp3);
+}
+
+void quick_charge(ROHEAD *rohp)
+{
+    RONODE *p=rohp->head;
+    while(p!=NULL)
+    {
+        p->robot.energy=100;
+        p=p->next;
+    }
 }

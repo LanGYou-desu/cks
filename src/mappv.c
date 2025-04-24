@@ -2,6 +2,8 @@
 
 int map_preview(int *flag)
 {
+    int color=0X0000;
+
     mouse_off(&mouse);
     draw_map_preview();
     mouse_on(mouse);
@@ -58,8 +60,38 @@ int map_preview(int *flag)
                 }
             }
         }
+        else if(mouse_press(100,0,924,1024)==1)
+        {
+            if(color==0XFFFF)
+            {
+                Line_Thick(mouse.x,mouse.y,mouse.x,mouse.y,10,color);
+            }
+            else
+            {
+                Line_Thick(mouse.x,mouse.y,mouse.x,mouse.y,2,color);
+            }
+        }
+        else if(mouse_press(924,0,1024,153)==1)
+        {
+            color = 0X0000;
+        }
+        else if(mouse_press(924,153,1024,307)==1)
+        {
+            color = 0XFFFF;
+        }
+        else if(mouse_press(924,307,1024,461)==1)
+        {
+            color = 0XF800;
+        }
+        else if(mouse_press(924,461,1024,615)==1)
+        {
+            color = 0X0400;
+        }
+        else if(mouse_press(924,615,1024,768)==1)
+        {
+            color = 0X001F;
+        }
     }
-    
     return 0;
 }
 
@@ -71,7 +103,13 @@ void draw_map_preview()
 
     draw_mainselector();
     bar1(0,450,100,550,0XD69A);
-    bar1(924,0,1024,768,0XD69A);
+
+    bar1(924,0,1024,153,0X0000);
+    bar1(924,153,1024,307,0XFFFF);
+    bar1(924,307,1024,461,0XF800);
+    bar1(924,461,1024,615,0X0400);
+    bar1(924,615,1024,768,0X001F);
+
     puthz(18,464,"≤÷ø‚",32,32,0X0000);
     puthz(18,504,"‘§¿¿",32,32,0X0000);
     Line_Thick(0,450,100,450,2,0X0000);
