@@ -58,6 +58,6 @@ void logout(){
     mouse_off(&mouse);
     bar1(0,0,1024,768,0XFFFF);
     Readbmp64k(0,0,"image\\goodbye.bmp");
-    delay(1500);
+    delay(1500);  
     exit(0);
 }

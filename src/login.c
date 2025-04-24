@@ -140,7 +140,7 @@ int login(int *flag)
 			}
 			else
 			{
-				if(Check_info("C://cks/user/user.dat",temp.account,temp.password) == 0)
+				if(Check_info("user/user.dat",temp.account,temp.password) == 0)
 				{
 					mouse_off(&mouse);
 					prt_hz24(440,325,"µÇÂ¼³É¹¦£¡",10,"HZK\\Hzk24h");

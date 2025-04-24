@@ -46,6 +46,12 @@ int main_menu(int *flag,int *robonum,int *item)
                 if(mouse_press(331,415,470,460) == 1)
                 {
                     *flag = 0;//·µ»Ø
+                    statistics_in[0] = 0;
+                    statistics_in[1] = 0;
+                    statistics_in[2] = 0;
+                    statistics_out[0] = 0;
+                    statistics_out[1] = 0;
+                    statistics_out[2] = 0;
                     *robonum = 0;
                     *item = 0;
                     *(item+1) = 0;

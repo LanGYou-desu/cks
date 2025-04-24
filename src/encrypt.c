@@ -57,9 +57,9 @@ void decrypt_string(unsigned char *str, unsigned char key)
 **********************/
 int save_user(USER temp)
 {
-    if (repeat_user("C://cks/user/user.dat", temp.account) == 1) 
+    if (repeat_user("user/user.dat", temp.account) == 1) 
     {
-        FILE *fp = fopen("C://cks/user/user.dat", "a");
+        FILE *fp = fopen("user/user.dat", "a");
         if (fp == NULL) 
         {
             prt_hz24(410, 380, "无法打开文件！", 10, "HZK\\Hzk24h");
@@ -70,7 +70,7 @@ int save_user(USER temp)
         fclose(fp);
         return 0;
     } 
-	else if(repeat_user("C://cks/user/user.dat", temp.account) == 0)
+	else if(repeat_user("user/user.dat", temp.account) == 0)
     {
         prt_hz24(420, 380, "用户已存在！", 10, "HZK\\Hzk24h");
         return -1;
