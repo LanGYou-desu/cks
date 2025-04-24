@@ -10,6 +10,9 @@ void put_inputline(int x,int y,int len);
 /*画出按钮*/
 void draw_button(int x1,int y1,int x2,int y2);
 
+/*绘制返回确认界面*/
+void draw_return_comfirm(int i);
+
 /*显示光标*/
 void show_gb(int x,int y);
 
@@ -18,5 +21,12 @@ void draw_robot(int x,int y,int flag);
 
 /*画出货架上的货物*/
 void draw_item(int x,int y,int type,int floor,int flag);
+
+/*画出侧边栏*/
+void draw_mainselector();
+
+/*随机装饰*/
+unsigned int GeneratePastelColor(void);
+void DrawAestheticPattern(int elementCount);
 
 #endif

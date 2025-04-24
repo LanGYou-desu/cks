@@ -43,10 +43,10 @@ int auto_out(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
             select_flag=1;
             draw_selecter();
         }
-        else if(!(mouse.x>=924&&mouse.y<=150)&&select_flag==1)
+        else if(!(mouse.x>=924&&mouse.y<=200)&&select_flag==1)
         {
             select_flag=0;
-            bar1(923,0,1024,150,0XFFFF);
+            bar1(923,0,1024,200,0XFFFF);
             draw_mock_select();
         }
 
@@ -65,11 +65,23 @@ int auto_out(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
             }
             else if(mouse_press(924,50,1024,100)==1)
             {
-                //watchMock();
+                draw_trace(rohp->length);
             }
             else if(mouse_press(924,100,1024,150)==1)
             {
-                draw_trace(rohp->length);
+                draw_auto_in(rohp);
+                reset_shelf(shhp, item);
+                init_item(item,shhp);
+                watchMock(rohp->length,10);
+                draw_auto_in(rohp);
+            }
+            else if(mouse_press(924,150,1024,200)==1)
+            {
+                draw_auto_in(rohp);
+                reset_shelf(shhp, item);
+                init_item(item,shhp);
+                watchMock(rohp->length,1);
+                draw_auto_in(rohp);
             }
         }
 
@@ -86,7 +98,8 @@ int auto_out(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
 void path_out(Robot *robot, int robonum, int *item, SHHEAD *shhp) 
 {
     /*============= 变量声明 =============*/
-    int i, j, k;                       
+    int i, j, k;      \
+    int key;                 
     int original_stock[3];          // 初始库存备份 [类型1-3]
     int remaining_stock[3];         // 货架剩余库存
     int delivered_items[3] = {0};   // 已出库货物计数
@@ -112,6 +125,16 @@ void path_out(Robot *robot, int robonum, int *item, SHHEAD *shhp)
     /*============= 主工作循环 =============*/
     while(1) 
     {
+        key = 0;
+        if(kbhit())
+        {
+            key=getch();
+        }
+        if(key == 0X1B) // ESC键退出
+        {
+            break;
+        }
+
         /*-- 阶段1：检查完成条件 --*/
         completion_flag = 1;
         for(i = 0; i < 3; i++) 
@@ -207,14 +230,10 @@ void path_out(Robot *robot, int robonum, int *item, SHHEAD *shhp)
                 // 重置状态并返回出生点
                 p->cargo_type = 0;
                 temp_item[k] = 0;  // 清空临时货物类型
-                setTarget(p, point[8 + p->id].x, point[8 + p->id].y);
             }
+            k++;
             p = p->next;
         }
-
-        /*-- 阶段7：返回出生点 --*/
-        robotlist = robot;
-        mainLoop(robonum);
     }
 
     /*============= 结束处理 =============*/

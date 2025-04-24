@@ -43,10 +43,10 @@ int auto_in(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
             select_flag=1;
             draw_selecter();
         }
-        else if(!(mouse.x>=924&&mouse.y<=150)&&select_flag==1)
+        else if(!(mouse.x>=924&&mouse.y<=200)&&select_flag==1)
         {
             select_flag=0;
-            bar1(923,0,1024,150,0XFFFF);
+            bar1(923,0,1024,200,0XFFFF);
             draw_mock_select();
         }
 
@@ -65,12 +65,24 @@ int auto_in(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
             }
             else if(mouse_press(924,50,1024,100)==1)
             {
-                //watchMock();
+                draw_trace(rohp->length);
             }
             else if(mouse_press(924,100,1024,150)==1)
             {
-                draw_trace(rohp->length);
+                draw_auto_in(rohp);
+                reset_shelf(shhp, item);
+                watchMock(rohp->length,10);
+                draw_auto_in(rohp);
+                init_item(item,shhp);
             }
+            else if(mouse_press(924,150,1024,200)==1)
+            {
+                draw_auto_in(rohp);
+                reset_shelf(shhp, item);
+                watchMock(rohp->length,1);
+                draw_auto_in(rohp);
+                init_item(item,shhp);
+            }   
         }
 
         if(mouse_press(0,0,100,50)==1)
@@ -86,7 +98,8 @@ int auto_in(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
 void path_in(Robot *robot, int robonum, int *item, SHHEAD *shhp) 
 {
     /*============= 变量声明 =============*/
-    int i, j;                       
+    int i, j;      
+    int key;                 
     int original_items[3];          // 原始货物数量备份
     int remaining_assignments[3];   // 剩余待分配货物数
     int delivered_items[3] = {0};   // 已送达货物计数器
@@ -112,6 +125,16 @@ void path_in(Robot *robot, int robonum, int *item, SHHEAD *shhp)
     /*============= 主工作循环 =============*/
     while(1) 
     {
+        key = 0;
+        if(kbhit())
+        {
+            key=getch();
+        }
+        if(key == 0X1B) // ESC键退出
+        {
+            break;
+        }
+
         /*-- 阶段1：检查完成条件 --*/
         completion_flag = 1;
         for(i = 0; i < 3; i++) 

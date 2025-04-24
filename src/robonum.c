@@ -63,6 +63,80 @@ int robo_menu(int *flag,int *robonum,ROHEAD **rohp)
             }
             mouse_on(mouse);
         }
+        else if(mouse_press(0,150,100,250) == 1)
+        {
+            if(robochange!=*robonum&&*robonum>0)
+            {
+                free_robolist(*rohp);//如果机器人数量更改成功，释放机器人链表，重新初始化机器人链表
+                *rohp=init_robolist(*robonum);
+                *rohp=create_robolist(*rohp);
+            }
+            *flag = 6;//电量监测
+            return 0;
+        }
+        else if(mouse_press(0,250,100,350) == 1)
+        {
+            if(robochange!=*robonum&&*robonum>0)
+            {
+                free_robolist(*rohp);//如果机器人数量更改成功，释放机器人链表，重新初始化机器人链表
+                *rohp=init_robolist(*robonum);
+                *rohp=create_robolist(*rohp);
+            }
+            *flag = 5;//设置货物
+            return 0;
+        }
+        else if(mouse_press(0,350,100,450) == 1)
+        {
+            if(robochange!=*robonum&&*robonum>0)
+            {
+                free_robolist(*rohp);//如果机器人数量更改成功，释放机器人链表，重新初始化机器人链表
+                *rohp=init_robolist(*robonum);
+                *rohp=create_robolist(*rohp);
+            }
+            *flag = 7;//开始模拟
+            return 0;
+        }
+        else if(mouse_press(0,450,100,550) == 1)
+        {
+            if(robochange!=*robonum&&*robonum>0)
+            {
+                free_robolist(*rohp);//如果机器人数量更改成功，释放机器人链表，重新初始化机器人链表
+                *rohp=init_robolist(*robonum);
+                *rohp=create_robolist(*rohp);
+            }
+            *flag = 10;//仓库预览
+            return 0;
+        }
+        else if(mouse_press(0,550,100,650) == 1)
+        {
+            if(robochange!=*robonum&&*robonum>0)
+            {
+                free_robolist(*rohp);//如果机器人数量更改成功，释放机器人链表，重新初始化机器人链表
+                *rohp=init_robolist(*robonum);
+                *rohp=create_robolist(*rohp);
+            }
+            *flag = 11;//程序介绍
+            return 0;
+        }
+        else if(mouse_press(0,650,100,750) == 1)
+        {
+            mouse_off(&mouse);
+            draw_return_comfirm(1);
+            mouse_on(mouse);
+            while(1){
+                mouse_show(&mouse);
+                if(mouse_press(331,415,470,460) == 1)
+                {
+                    logout();
+                    exit(0);
+                }
+                else if(mouse_press(546,415,685,460) == 1)
+                {
+                    *flag = 3;//取消
+                    return 0;
+                }
+            }
+        }
     }
 
     return 0;
@@ -71,11 +145,18 @@ int robo_menu(int *flag,int *robonum,ROHEAD **rohp)
 void draw_robo_menu()
 {
     bar1(0,0,1024,768,0XFFFF);
-    bar1(0,0,100,50,0X67FC);
-    puthz(18,9,"返回",32,32,0X0000);
+
+    draw_mainselector();
+    bar1(0,50,100,150,0XD69A);
+    puthz(18,64,"设置",32,32,0X0000);
+    puthz(18,104,"人机",32,32,0X0000);
+    Line_Thick(0,50,100,50,2,0X0000);
+    Line_Thick(0,150,100,150,2,0X0000);
+    Line_Thick(100,0,100,768,2,0X0000);
+
     draw_commoninput(470,439,100,"");
     puthz(390,309,"请输入机器人数量：",32,32,0X0000);
-    Readbmp64k(110,200,"image\\robot.bmp");
+    Readbmp64k(710,200,"image\\robot.bmp");
 }
 
 char* itoa(int value, char* string, int radix)

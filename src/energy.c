@@ -5,7 +5,7 @@ int energy_monitor(int *flag,ROHEAD *rohp)
     if(rohp->length==0)
     {
        draw_none_robot();
-       *flag=3;
+       *flag=4;
        delay(1500);
        return 0;
     }
@@ -30,6 +30,50 @@ int energy_monitor(int *flag,ROHEAD *rohp)
             delay(500);
             return 0;
         }
+        else if(mouse_press(0,50,100,150) == 1)
+        {
+            *flag = 4;//设置人机
+            return 0;
+        }
+        else if(mouse_press(0,250,100,350) == 1)
+        {
+            *flag = 5;//设置货物
+            return 0;
+        }
+        else if(mouse_press(0,350,100,450) == 1)
+        {
+            *flag = 7;//开始模拟
+            return 0;
+        }
+        else if(mouse_press(0,450,100,550) == 1)
+        {
+            *flag = 10;//仓库预览
+            return 0;
+        }
+        else if(mouse_press(0,550,100,650) == 1)
+        {
+            *flag = 11;//程序介绍
+            return 0;
+        }
+        else if(mouse_press(0,650,100,750) == 1)
+        {
+            mouse_off(&mouse);
+            draw_return_comfirm(1);
+            mouse_on(mouse);
+            while(1){
+                mouse_show(&mouse);
+                if(mouse_press(331,415,470,460) == 1)
+                {
+                    logout();
+                    exit(0);
+                }
+                else if(mouse_press(546,415,685,460) == 1)
+                {
+                    *flag = 3;//取消
+                    return 0;
+                }
+            }
+        }
     }
 }
 
@@ -53,9 +97,9 @@ void draw_energy_monitor(int *flag,ROHEAD *rohp)
     }
     else if(rohp->length==3)
     {
-        Readbmp64k(82,100,"image\\robot.bmp");
-        Readbmp64k(396,100,"image\\robot.bmp");
-        Readbmp64k(710,100,"image\\robot.bmp");
+        Readbmp64k(106,100,"image\\robot.bmp");
+        Readbmp64k(420,100,"image\\robot.bmp");
+        Readbmp64k(734,100,"image\\robot.bmp");
         show_energy(rohp);
     }
     else
@@ -65,11 +109,20 @@ void draw_energy_monitor(int *flag,ROHEAD *rohp)
        delay(1500);
        return 0;
     }
+
+    draw_mainselector();
+    bar1(0,150,100,250,0XD69A);
+    puthz(18,164,"电量",32,32,0X0000);
+    puthz(18,204,"监测",32,32,0X0000);
+    Line_Thick(0,150,100,150,2,0X0000);
+    Line_Thick(0,250,100,250,2,0X0000);
+    Line_Thick(100,0,100,768,2,0X0000);
 }
 
 void draw_none_robot()
 {
     bar1(0,0,1024,768,0XFFFF);
+    Readbmp64k(0,0,"image\\bg.bmp");
     puthz(350,350,"无已设置机器人",48,48,0X0000);
 }
 
@@ -120,7 +173,7 @@ void show_energy(ROHEAD *rohp)
     }
     else if(rohp->length==3)
     {
-        x=156;
+        x=180;
         while(p!=NULL)
         {
             y=x;

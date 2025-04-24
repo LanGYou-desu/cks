@@ -23,9 +23,9 @@
 #define STEP_BASE         10          // 基础步长
 #define CHARGE_POWER      30          // 充电阈值
 #define HISTORY_SIZE       5          // 轨迹历史长度
-#define CHARGE_SPEED     10.0f        // 充电速度
+#define CHARGE_SPEED     25.0f        // 充电速度
 #define MAX_ROBOTS         3          // 最大机器人数量
-#define MAX_STEPS        600          // 最大步数
+#define MAX_STEPS        500          // 最大步数
 #define IDLE_LIMIT       100          // 最大空闲时间
 #define ESCAPE_ATTEMPTS    5          // 最大逃避尝试次数
 

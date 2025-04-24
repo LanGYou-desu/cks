@@ -72,7 +72,7 @@ int checkCollision(int x, int y, int exclude_id)
 }
 
 /*******************************************************
-* 力场计算函数（使用宏定义参数）
+* 力场计算函数
 *******************************************************/
 void calculateForces(Robot* robot, float* dx, float* dy) 
 {
@@ -104,9 +104,31 @@ void calculateForces(Robot* robot, float* dx, float* dy)
         *dy += (fty - fy) * ATTRACT_GAIN * att_factor;
     }
 
-     /* 障碍物斥力 */
-     for(i=0; i<6; i++) 
-     {
+    /* 出生点和充电站附近位置修正 */
+    if(robot->y>=610&&robot->tx<512)
+    {
+        *dx=*dx-0.1f;
+        *dy=*dy+0.1f;
+    }
+    else if(robot->y>=610&&robot->tx>512)
+    {
+        *dx=*dx+0.1f;
+        *dy=*dy-0.1f;
+    }
+    else if(robot->y<=185&&robot->tx<512)
+    {
+        *dx=*dx-0.1f;
+        *dy=*dy-0.1f;
+    }
+    else if(robot->y<=185&&robot->tx>512)
+    {
+        *dx=*dx+0.1f;
+        *dy=*dy+0.1f;
+    }
+
+    /* 障碍物斥力 */
+    for(i=0; i<6; i++) 
+    {
         if(robot->state==1 && i==4) 
         {
             continue; // 前往充电时忽略充电站
@@ -436,7 +458,7 @@ void handleCharging(Robot* robot)
 }
 
 /*******************************************************
-* 主循环（含自动终止条件）
+* 主循环
 *******************************************************/
 void mainLoop(int robonum) 
 {
@@ -531,7 +553,7 @@ void mainLoop(int robonum)
 }
 
 /*******************************************************
-* 所有机器人到达目标处理（支持多目标更新）
+* 所有机器人到达目标处理
 *******************************************************/
 void all_reach() 
 {
@@ -546,7 +568,9 @@ void all_reach()
     }
 }
 
-/* 全局状态检查函数 */
+/*******************************************************
+* 全局状态检查函数 
+*******************************************************/
 int allRobotsReached() 
 {
     Robot* current = robotlist;

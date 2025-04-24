@@ -32,4 +32,7 @@ void setRobotPoint(Robot *robot, int id, int pointid);
 /*ÏÔÊ¾¹ì¼£*/
 void draw_trace(int robonum);
 
+/*Ä£ÄâÖØÑİ*/
+void watchMock(int robonum,int speed);
+
 #endif
