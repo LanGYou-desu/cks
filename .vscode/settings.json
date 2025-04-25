@@ -11,6 +11,7 @@
         "BMP.C": "cpp",
         "allfunc.h": "c",
         "welcome.h": "c",
-        "encrypt.h": "c"
+        "encrypt.h": "c",
+        "move.h": "c"
     }
 }

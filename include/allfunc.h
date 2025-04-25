@@ -42,6 +42,7 @@
 #include"move.h"
 #include"energy.h"
 #include"motplan.h"
+#include"show_mock.h"
 #include"auto_in.h"
 #include"auto_out.h"
 #include"mock_hand.h"
