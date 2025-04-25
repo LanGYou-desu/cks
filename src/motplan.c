@@ -490,7 +490,7 @@ void mainLoop(int robonum)
             handleCharging(current);
 
             /* 记录每个时间步的位置 */
-            fprintf(current->logfile, "%d,%d\n", current->x, current->y);
+            fprintf(current->logfile, "%d,%d,%d\n", current->x, current->y, current->cargo_type);
             fflush(current->logfile); // 确保日志文件及时写入
 
             bar1(current->prev_x-25,current->prev_y-25,current->prev_x+25,current->prev_y+25,0XFFFF);
@@ -522,7 +522,7 @@ void mainLoop(int robonum)
             {
                 r->x=r->tx;
                 r->y=r->ty;
-                fprintf(r->logfile, "%d,%d\n", r->x, r->y);
+                fprintf(r->logfile, "%d,%d,%d\n", r->x, r->y, r->cargo_type);
                 fflush(r->logfile); // 确保日志文件及时写入
 
                 bar1(r->prev_x-25,r->prev_y-25,r->prev_x+25,r->prev_y+25,0XFFFF);
@@ -545,7 +545,7 @@ void mainLoop(int robonum)
         bar1(current->prev_x-25,current->prev_y-25,current->prev_x+25,current->prev_y+25,0XFFFF);
         draw_robot(current->x,current->y,0);
 
-        fprintf(current->logfile, "%d,%d\n", current->x, current->y);
+        fprintf(current->logfile, "%d,%d,%d\n", current->x, current->y, current->cargo_type);
         // 确保即使崩溃也记录最终状态
         fflush(current->logfile); 
         current = current->next;

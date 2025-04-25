@@ -72,7 +72,7 @@ int auto_out(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
                 draw_auto_in(rohp);
                 reset_shelf(shhp, item);
                 init_item(item,shhp);
-                watchMock(rohp->length,10);
+                watchMockout(rohp->length,10,item);
                 draw_auto_in(rohp);
             }
             else if(mouse_press(924,150,1024,200)==1)
@@ -80,7 +80,7 @@ int auto_out(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
                 draw_auto_in(rohp);
                 reset_shelf(shhp, item);
                 init_item(item,shhp);
-                watchMock(rohp->length,1);
+                watchMockout(rohp->length,1,item);
                 draw_auto_in(rohp);
             }
             else if(mouse_press(924,200,1024,250)==1)

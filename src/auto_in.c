@@ -71,7 +71,7 @@ int auto_in(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
             {
                 draw_auto_in(rohp);
                 reset_shelf(shhp, item);
-                watchMock(rohp->length,10);
+                watchMockin(rohp->length,10,item);
                 draw_auto_in(rohp);
                 init_item(item,shhp);
             }
@@ -79,7 +79,7 @@ int auto_in(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
             {
                 draw_auto_in(rohp);
                 reset_shelf(shhp, item);
-                watchMock(rohp->length,1);
+                watchMockin(rohp->length,1,item);
                 draw_auto_in(rohp);
                 init_item(item,shhp);
             }   
