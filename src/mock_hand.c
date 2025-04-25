@@ -16,6 +16,11 @@ int mock_handin(int *flag,int *item)
     draw_mock_hand();
     mouse_on(mouse);
 
+    for(i=0;i<3;i++)
+    {
+        titem[i]=item[i];
+    }
+
     while(1)
     {
         mouse_show(&mouse);
@@ -32,12 +37,25 @@ int mock_handin(int *flag,int *item)
         }
         else if(mouse_press(0,0,100,50)==1)
         {
+            for(i=0;i<3;i++)
+            {
+                titem[i]=item[i];
+                statistics_in[i]=statistics_in[i]+item[i];
+            }
+
+            if(timestep%3==0&&timestep!=0)
+            {
+                timestep=1;
+            }
+            timestep++;
+            update_report(1, item, NULL, 0, 0);
+
             *flag=7;//返回
             return 0;
         }
         if(key==0X0D)
         {
-            fp=fopen("path\\pathin.txt","w");
+            fp=fopen("path\\pathin.log","w");
     
             rob.x=308;
             rob.y=710;
@@ -45,12 +63,6 @@ int mock_handin(int *flag,int *item)
             rob.energy=100;
 
             draw_robot(rob.x,rob.y,0);
-
-            for(i=0;i<3;i++)
-            {
-                titem[i]=item[i];
-                statistics_in[i]=statistics_in[i]+item[i];
-            }
 
             shhp=init_shelflist();
             shhp=create_shelflist(shhp,item);
@@ -112,6 +124,18 @@ int mock_handin(int *flag,int *item)
 
                 if(rob.energy<=0)//能量耗尽
                 {
+                    for(i=0;i<3;i++)
+                    {
+                        statistics_in[i]=statistics_in[i]+item[i];
+                    }
+
+                    if(timestep%3==0&&timestep!=0)
+                    {
+                        timestep=1;
+                    }
+                    timestep++;
+                    update_report(1, item, NULL, 0, 0);
+
                     delay(1000);
                     bar1(0,0,1024,768,0XFFFF);
                     Readbmp64k(0,0,"image\\bg.bmp");
@@ -248,12 +272,24 @@ int mock_handout(int *flag,int *item)
         }
         else if(mouse_press(0,0,100,50)==1)
         {
+            for(i=0;i<3;i++)
+            {
+                statistics_out[i]=statistics_out[i]+item[i];
+            }
+
+            if(timestep%3==0&&timestep!=0)
+            {
+                timestep=1;
+            }
+            timestep++;
+            update_report(1, item, NULL, 1, 0);
+
             *flag=7;//返回
             return 0;
         }
         if(key==0X0D)
         {
-            fp=fopen("path\\pathout.txt","w");
+            fp=fopen("path\\pathout.log","w");
     
             rob.x=308;
             rob.y=710;
@@ -261,11 +297,6 @@ int mock_handout(int *flag,int *item)
             rob.energy=100;
             
             draw_robot(rob.x,rob.y,0);
-
-            for(i=0;i<3;i++)
-            {
-                statistics_out[i]=statistics_out[i]+item[i];
-            }
 
             mouse_off(&mouse);
 
@@ -322,6 +353,18 @@ int mock_handout(int *flag,int *item)
 
                 if(rob.energy<=0)//能量耗尽
                 {
+                    for(i=0;i<3;i++)
+                    {
+                        statistics_out[i]=statistics_out[i]+item[i];
+                    }
+
+                    if(timestep%3==0&&timestep!=0)
+                    {
+                        timestep=1;
+                    }
+                    timestep++;
+                    update_report(1, item, NULL, 1, 0);
+
                     delay(1000);
                     bar1(0,0,1024,768,0XFFFF);
                     Readbmp64k(0,0,"image\\bg.bmp");
@@ -432,7 +475,10 @@ void draw_mock_hand()
     bar1(0,0,100,50,0X67FC);
     puthz(2,63,"模拟重演",24,24,0X0000);
     puthz(18,9,"返回",32,32,0X0000);
+    
     Line_Thick(0,50,100,50,1,0X0000);
+    Line_Thick(0,100,100,100,1,0X0000);
+    Line_Thick(100,0,100,100,1,0X0000);
     
     draw_hand_robot(308,710);
     puthz(762,25,"电量：",32,32,0X0000);

@@ -25,7 +25,7 @@ int mock_menu(int *flag,int *robonum,int *item,ROHEAD *rohp,SHHEAD *shhp)
             *flag=12;//入库
             return 0;
         }
-        else if(mouse_press(374,595,653,690)==1&&judge_mock(1,item)==1&&auto_flag==0)
+        else if(mouse_press(374,595,653,690)==1&&judge_mock(1,item)==1&&auto_flag==0&&judge_itemnum(item)==1)
         {
             *flag=13;//出库
             return 0;
@@ -39,6 +39,12 @@ int mock_menu(int *flag,int *robonum,int *item,ROHEAD *rohp,SHHEAD *shhp)
         else if(mouse_press(374,595,653,690)==1&&judge_mock(1,item)==0&&auto_flag==0)
         {
             prt_hz24(469,290,"数量有误！",10,"HZK\\Hzk24h");
+            delay(500);
+            return 0;
+        }
+        else if(mouse_press(374,595,653,690)==1&&judge_mock(1,item)==1&&auto_flag==0&&judge_itemnum(item)==0)
+        {
+            prt_hz24(469,290,"货物不足！",10,"HZK\\Hzk24h");
             delay(500);
             return 0;
         }

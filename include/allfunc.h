@@ -101,6 +101,6 @@ extern Robot* robotlist;         //机器人链表头指针
 
 extern int statistics_in[3];     //统计入库数据
 extern int statistics_out[3];    //统计出库数据
-extern int timestep;                 //时间   
+extern int timestep;             //时间   
 
 #endif

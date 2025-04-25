@@ -57,6 +57,9 @@ int main_menu(int *flag,int *robonum,int *item)
                     *item = 0;
                     *(item+1) = 0;
                     *(item+2) = 0;
+                    remove("report\\report1.txt");
+                    remove("report\\report2.txt");
+                    remove("report\\report3.txt");
                     return 0;
                 }
                 else if(mouse_press(546,415,685,460) == 1)

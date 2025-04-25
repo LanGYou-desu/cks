@@ -58,6 +58,9 @@ void logout(){
     mouse_off(&mouse);
     bar1(0,0,1024,768,0XFFFF);
     Readbmp64k(0,0,"image\\goodbye.bmp");
+    remove("report\\report1.txt");
+    remove("report\\report2.txt");
+    remove("report\\report3.txt");
     free(robotlist);
     free(obs);
     free(point);

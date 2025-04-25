@@ -440,7 +440,7 @@ void rehand(int flag,int *item)
 
     if(flag==1)
     {
-        fp=fopen("path\\pathin.txt","r");
+        fp=fopen("path\\pathin.log","r");
         if(fp==NULL)
         {
             printf("文件打开失败！\n");
@@ -477,7 +477,7 @@ void rehand(int flag,int *item)
     {
         init_item(item,shhp);
 
-        fp=fopen("path\\pathout.txt","r");
+        fp=fopen("path\\pathout.log","r");
         if(fp==NULL)
         {
             printf("文件打开失败！\n");

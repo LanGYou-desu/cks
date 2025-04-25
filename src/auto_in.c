@@ -94,6 +94,13 @@ int auto_in(int *flag,int *item,ROHEAD *rohp,SHHEAD *shhp)
 
         if(mouse_press(0,0,100,50)==1)
         {
+            if(timestep%3==0&&timestep!=0)
+            {
+                timestep=1;
+            }
+            timestep++;
+            update_report(robonum, item, robot, 0, 1);
+
             *flag=7;
             freeRoboList(robot);
             freeRoboList(robotlist);
@@ -240,6 +247,9 @@ void draw_auto_in(ROHEAD *rohp)
     bar1(380,680,650,760,0XFFFF);
     bar1(0,0,100,50,0X67FC);
     puthz(18,9,"·µ»Ø",32,32,0X0000);
+
+    Line_Thick(0,50,100,50,1,0X0000);
+    Line_Thick(100,0,100,50,1,0X0000);
 
     draw_mock_select();
     
