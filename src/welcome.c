@@ -50,7 +50,7 @@ void draw_welcome()
     puthz(665,398,"游客模式",32,32,0XC0C0);
     
     put_asc16_size(938,730,2,2,"debug",0X0000);
-    put_asc16_size(5,730,2,2,"version:1.1.0",0X0000);
+    put_asc16_size(5,730,2,2,"version:2.1.0",0X0000);
     Line_Thick(0,722,1024,722,2,0X0000);
 }
 
