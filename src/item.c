@@ -167,8 +167,6 @@ void draw_item_menu()
     bar1(0,0,1024,768,0XFFFF);
     Readbmp64k(413,490,"image\\box.bmp");
 
-    DrawAestheticPattern(20);
-
     draw_mainselector();
     bar1(0,150,100,250,0XD69A);
     puthz(18,164,"…Ë÷√",32,32,0X0000);

@@ -6,6 +6,7 @@ int report_menu(int *flag)
     int choose=timestep;
     
     mouse_off(&mouse);
+    draw_anime();
     draw_report_menu(choose);
     mouse_on(mouse);
     
@@ -41,7 +42,8 @@ int report_menu(int *flag)
         else if(mouse_press(827,0,1024,100)==1)
         {
             download_report();
-            return 0;
+            draw_report_menu(choose);
+            continue;
         }
         else if(mouse_press(0,176,41,217)==1)
         {
@@ -72,9 +74,7 @@ int report_menu(int *flag)
 
 void draw_report_menu(int choose)
 {
-    draw_anime();
-
-    bar1(0,0,1024,768,65369);
+    bar1(0,0,1024,768,0xF8FFBD);
     
     bar1(0,0,100,50,0X67FC);
     puthz(18,9,"·µ»Ø",32,32,0X0000);

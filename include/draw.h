@@ -28,8 +28,5 @@ void draw_item(int x,int y,int type,int floor,int flag);
 /*»­³ö²à±ßÀ¸*/
 void draw_mainselector();
 
-/*Ëæ»ú×°ÊÎ*/
-unsigned int GeneratePastelColor(void);
-void DrawAestheticPattern(int elementCount);
 
 #endif
