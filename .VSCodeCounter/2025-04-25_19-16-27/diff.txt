@@ -1,0 +1,45 @@
+Date : 2025-04-25 19:16:27
+Directory : d:\Borland C++\DISK_C\cks
+Total : 16 files,  4901 codes, 6 comments, 34 blanks, all 4941 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Log      |          2 |      4,742 |          0 |          0 |      4,742 |
+| C        |          9 |        150 |          0 |         27 |        177 |
+| C++      |          5 |          9 |          6 |          7 |         22 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------+------------+------------+------------+------------+------------+
+| path                                          | files      | code       | comment    | blank      | total      |
++-----------------------------------------------+------------+------------+------------+------------+------------+
+| .                                             |         16 |      4,901 |          6 |         34 |      4,941 |
+| include                                       |          6 |         10 |          6 |          7 |         23 |
+| path                                          |          2 |      4,742 |          0 |          0 |      4,742 |
+| src                                           |          8 |        149 |          0 |         27 |        176 |
++-----------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                      | language | code       | comment    | blank      | total      |
++-----------------------------------------------+----------+------------+------------+------------+------------+
+| d:\Borland C++\DISK_C\cks\include\allfunc.h   | C        |          1 |          0 |          0 |          1 |
+| d:\Borland C++\DISK_C\cks\include\draw.h      | C++      |          1 |          1 |          1 |          3 |
+| d:\Borland C++\DISK_C\cks\include\energy.h    | C++      |          1 |          1 |          1 |          3 |
+| d:\Borland C++\DISK_C\cks\include\main_menu.h | C++      |         -1 |         -1 |         -1 |         -3 |
+| d:\Borland C++\DISK_C\cks\include\mock.h      | C++      |          1 |          1 |          1 |          3 |
+| d:\Borland C++\DISK_C\cks\include\report.h    | C++      |          7 |          4 |          5 |         16 |
+| d:\Borland C++\DISK_C\cks\path\ROBOT1.LOG     | Log      |      2,371 |          0 |          0 |      2,371 |
+| d:\Borland C++\DISK_C\cks\path\ROBOT2.LOG     | Log      |      2,371 |          0 |          0 |      2,371 |
+| d:\Borland C++\DISK_C\cks\src\draw.c          | C        |          5 |          0 |          1 |          6 |
+| d:\Borland C++\DISK_C\cks\src\energy.c        | C        |         63 |          0 |         15 |         78 |
+| d:\Borland C++\DISK_C\cks\src\main.c          | C        |          4 |          0 |          1 |          5 |
+| d:\Borland C++\DISK_C\cks\src\main_menu.c     | C        |        -29 |          0 |          0 |        -29 |
+| d:\Borland C++\DISK_C\cks\src\mock.c          | C        |         18 |          0 |          1 |         19 |
+| d:\Borland C++\DISK_C\cks\src\report.c        | C        |         81 |          0 |          9 |         90 |
+| d:\Borland C++\DISK_C\cks\src\show_mock.c     | C        |          2 |          0 |          0 |          2 |
+| d:\Borland C++\DISK_C\cks\src\welcome.c       | C        |          5 |          0 |          0 |          5 |
+| Total                                         |          |      4,901 |          6 |         34 |      4,941 |
++-----------------------------------------------+----------+------------+------------+------------+------------+

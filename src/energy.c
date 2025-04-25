@@ -161,7 +161,20 @@ int energy_monitor(int *flag,ROHEAD *rohp)
 void draw_energy_monitor(ROHEAD *rohp)
 {
     int count=1;
+    int temp=0,wat=0;
+    char temper[4];
+    char water[4];
     RONODE *p=rohp->head;
+
+    srand(time(NULL));
+
+    temp=rand()%5+20;
+    wat=rand()%10+40;
+
+    itoa(temp,temper,10);
+    itoa(wat,water,10);
+    strcat(temper,"C");
+    strcat(water,"%");
 
     bar1(0,0,1024,768,0XFFFF);
     Readbmp64k(120,0,"image\\map.bmp");
@@ -175,6 +188,11 @@ void draw_energy_monitor(ROHEAD *rohp)
     Line_Thick(0,350,100,350,2,0X0000);
     Line_Thick(0,250,100,250,2,0X0000);
     Line_Thick(100,0,100,768,2,0X0000);
+
+    puthz(762,45,"ÎÂ¶È£º",32,32,0X0000);
+    put_asc16_size(847,40,3,3,temper,0X0000);
+    puthz(762,90,"Êª¶È£º",32,32,0X0000);
+    put_asc16_size(847,85,3,3,water,0X0000);
 
     if(rohp->length!=0)
     {
