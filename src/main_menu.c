@@ -1,7 +1,8 @@
 #include"allfunc.h"
 
-int statistics_in[3] = {0,0,0};//统计入库数据
+int statistics_in[3] = {0,0,0}; //统计入库数据
 int statistics_out[3] = {0,0,0};//统计出库数据
+int timestep = 0;               //时间步
 
 int main_menu(int *flag,int *robonum,int *item)
 {
@@ -72,12 +73,12 @@ int main_menu(int *flag,int *robonum,int *item)
         }
         else if(mouse_press(0,150,100,250) == 1)
         {
-            *flag = 6;//电量监测
+            *flag = 5;//设置货物
             return 0;
         }
         else if(mouse_press(0,250,100,350) == 1)
         {
-            *flag = 5;//设置货物
+            *flag = 6;//电量监测
             return 0;
         }
         else if(mouse_press(0,350,100,450) == 1)
@@ -119,11 +120,12 @@ int main_menu(int *flag,int *robonum,int *item)
             mouse_off(&mouse);
             draw_return_comfirm(2);
             mouse_on(mouse);
-            while(1){
+            while(1)
+            {
                 mouse_show(&mouse);
                 if(mouse_press(331,415,470,460) == 1)
                 {
-                    report();
+                    *flag=14;//生成报告
                     return 0;
                 }
                 else if(mouse_press(546,415,685,460) == 1)
@@ -169,35 +171,4 @@ void draw_main_menu()
     puthz(680,300,"出库总数：",48,48,0X0000);
     put_asc16_size(910,226,4,4,str1,0X0000);
     put_asc16_size(910,296,4,4,str2,0X0000);
-}
-
-void report()
-{
-    FILE *fp;
-    fp = fopen("report\\report.txt","w");
-    setvbuf(fp, NULL, _IONBF, 0); // 无缓冲模式
-    if(fp == NULL)
-    {
-        printf("文件打开失败\n");
-        return;
-    }
-    fprintf(fp,"====================\n");
-    fprintf(fp,"入库数据统计：\n");
-    fprintf(fp,"入库总数：     %d\n",statistics_in[0]+statistics_in[1]+statistics_in[2]);
-    fprintf(fp,"入库一类货物：  %d\n",statistics_in[0]);
-    fprintf(fp,"入库二类货物：  %d\n",statistics_in[1]);
-    fprintf(fp,"入库三类货物：  %d\n",statistics_in[2]);
-    fprintf(fp,"====================\n");
-    fprintf(fp,"出库数据统计：\n");
-    fprintf(fp,"出库总数：     %d\n",statistics_out[0]+statistics_out[1]+statistics_out[2]);
-    fprintf(fp,"出库一类货物：  %d\n",statistics_out[0]);
-    fprintf(fp,"出库二类货物：  %d\n",statistics_out[1]);
-    fprintf(fp,"出库三类货物：  %d\n",statistics_out[2]);
-    fprintf(fp,"====================\n");
-    fprintf(fp,"出入库综合统计：\n");
-    fprintf(fp,"一类货物变化量：%d\n",statistics_in[0]-statistics_out[0]);
-    fprintf(fp,"二类货物变化量：%d\n",statistics_in[1]-statistics_out[1]);
-    fprintf(fp,"三类货物变化量：%d\n",statistics_in[2]-statistics_out[2]);
-    fprintf(fp,"====================\n");
-    fflush(fp); 
 }

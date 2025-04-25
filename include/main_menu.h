@@ -7,7 +7,4 @@ void draw_main_menu();
 /*主菜单*/
 int main_menu(int *flag,int *robonum,int *item);
 
-/*生成报告*/
-void report();
-
 #endif

@@ -5,7 +5,7 @@
 int energy_monitor(int *flag,ROHEAD *rohp);
 
 /*绘制能量监控界面*/
-void draw_energy_monitor(int *flag,ROHEAD *rohp);
+void draw_energy_monitor(ROHEAD *rohp);
 
 /*绘制错误界面*/
 void draw_none_robot();
@@ -14,6 +14,9 @@ void draw_none_robot();
 void charge(ROHEAD *rohp);
 
 /*显示能量*/
-void show_energy(ROHEAD *rohp);
+void show_energy(int x, int y, ROHEAD *rohp, int type);
+
+/*显示货物*/
+void show_item(int x, int y, int type);
 
 #endif

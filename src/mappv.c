@@ -23,12 +23,12 @@ int map_preview(int *flag)
         }
         else if(mouse_press(0,150,100,250) == 1)
         {
-            *flag = 6;//电量监测
+            *flag = 5;//设置货物
             return 0;
         }
         else if(mouse_press(0,250,100,350) == 1)
         {
-            *flag = 5;//设置货物
+            *flag = 6;//电量监测
             return 0;
         }
         else if(mouse_press(0,350,100,450) == 1)

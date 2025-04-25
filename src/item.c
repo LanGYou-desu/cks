@@ -106,7 +106,7 @@ int item_menu(int *flag,int *item,SHHEAD **shhp)
             *flag = 4;//设置人机
             return 0;
         }
-        else if(mouse_press(0,150,100,250) == 1)
+        else if(mouse_press(0,250,100,350) == 1)
         {
             free_shelf(*shhp);//货物数量更改，释放货物链表，重新初始化货物链表
             *shhp=init_shelflist();
@@ -170,11 +170,11 @@ void draw_item_menu()
     DrawAestheticPattern(20);
 
     draw_mainselector();
-    bar1(0,250,100,350,0XD69A);
-    puthz(18,264,"设置",32,32,0X0000);
-    puthz(18,304,"货物",32,32,0X0000);
+    bar1(0,150,100,250,0XD69A);
+    puthz(18,164,"设置",32,32,0X0000);
+    puthz(18,204,"货物",32,32,0X0000);
+    Line_Thick(0,150,100,150,2,0X0000);
     Line_Thick(0,250,100,250,2,0X0000);
-    Line_Thick(0,350,100,350,2,0X0000);
     Line_Thick(100,0,100,768,2,0X0000);
     
     draw_commoninput(270,439,100,"");

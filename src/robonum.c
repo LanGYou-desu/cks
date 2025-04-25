@@ -71,7 +71,7 @@ int robo_menu(int *flag,int *robonum,ROHEAD **rohp)
                 *rohp=init_robolist(*robonum);
                 *rohp=create_robolist(*rohp);
             }
-            *flag = 6;//电量监测
+            *flag = 5;//电量监测
             return 0;
         }
         else if(mouse_press(0,250,100,350) == 1)
@@ -82,7 +82,7 @@ int robo_menu(int *flag,int *robonum,ROHEAD **rohp)
                 *rohp=init_robolist(*robonum);
                 *rohp=create_robolist(*rohp);
             }
-            *flag = 5;//设置货物
+            *flag = 6;//设置货物
             return 0;
         }
         else if(mouse_press(0,350,100,450) == 1)

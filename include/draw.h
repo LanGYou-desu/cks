@@ -16,6 +16,9 @@ void draw_return_comfirm(int i);
 /*显示光标*/
 void show_gb(int x,int y);
 
+/*画出显示框*/
+void draw_showbox(int x,int y);
+
 /*画出机器人*/
 void draw_robot(int x,int y,int flag);   
 

@@ -1,14 +1,14 @@
-"filename", "language", "C", "JSON with Comments", "Markdown", "Makefile", "C++", "Log", "comment", "blank", "total"
+"filename", "language", "C", "Log", "Markdown", "Makefile", "C++", "JSON with Comments", "comment", "blank", "total"
 "d:\Borland C++\DISK_C\cks\BGI\BGIDEMO.C", "C", 962, 0, 0, 0, 0, 0, 128, 314, 1404
 "d:\Borland C++\DISK_C\cks\Makefile", "Makefile", 0, 0, 0, 48, 0, 0, 29, 23, 100
 "d:\Borland C++\DISK_C\cks\README.md", "Markdown", 0, 0, 2, 0, 0, 0, 0, 1, 3
-"d:\Borland C++\DISK_C\cks\cks.code-workspace", "JSON with Comments", 0, 22, 0, 0, 0, 0, 0, 0, 22
+"d:\Borland C++\DISK_C\cks\cks.code-workspace", "JSON with Comments", 0, 0, 0, 0, 0, 22, 0, 0, 22
 "d:\Borland C++\DISK_C\cks\include\BMP.h", "C++", 0, 0, 0, 0, 58, 0, 26, 18, 102
 "d:\Borland C++\DISK_C\cks\include\SVGA.H", "C++", 0, 0, 0, 0, 44, 0, 58, 19, 121
-"d:\Borland C++\DISK_C\cks\include\allfunc.h", "C", 89, 0, 0, 0, 0, 0, 0, 13, 102
+"d:\Borland C++\DISK_C\cks\include\allfunc.h", "C", 92, 0, 0, 0, 0, 0, 0, 13, 105
 "d:\Borland C++\DISK_C\cks\include\auto_in.h", "C++", 0, 0, 0, 0, 7, 0, 4, 5, 16
 "d:\Borland C++\DISK_C\cks\include\auto_out.h", "C++", 0, 0, 0, 0, 8, 0, 5, 6, 19
-"d:\Borland C++\DISK_C\cks\include\draw.h", "C++", 0, 0, 0, 0, 9, 0, 6, 7, 22
+"d:\Borland C++\DISK_C\cks\include\draw.h", "C++", 0, 0, 0, 0, 13, 0, 9, 10, 32
 "d:\Borland C++\DISK_C\cks\include\encrypt.h", "C", 14, 0, 0, 0, 0, 0, 7, 9, 30
 "d:\Borland C++\DISK_C\cks\include\energy.h", "C++", 0, 0, 0, 0, 8, 0, 5, 6, 19
 "d:\Borland C++\DISK_C\cks\include\ghz.h", "C++", 0, 0, 0, 0, 6, 0, 0, 6, 12
@@ -17,41 +17,46 @@
 "d:\Borland C++\DISK_C\cks\include\introd.h", "C++", 0, 0, 0, 0, 7, 0, 0, 5, 12
 "d:\Borland C++\DISK_C\cks\include\item.h", "C++", 0, 0, 0, 0, 5, 0, 2, 3, 10
 "d:\Borland C++\DISK_C\cks\include\login.h", "C++", 0, 0, 0, 0, 9, 0, 4, 5, 18
-"d:\Borland C++\DISK_C\cks\include\main_menu.h", "C++", 0, 0, 0, 0, 7, 0, 4, 5, 16
-"d:\Borland C++\DISK_C\cks\include\map.h", "C++", 0, 0, 0, 0, 31, 0, 11, 13, 55
+"d:\Borland C++\DISK_C\cks\include\main_menu.h", "C++", 0, 0, 0, 0, 6, 0, 3, 4, 13
+"d:\Borland C++\DISK_C\cks\include\map.h", "C++", 0, 0, 0, 0, 29, 0, 9, 11, 49
+"d:\Borland C++\DISK_C\cks\include\mappv.h", "C++", 0, 0, 0, 0, 5, 0, 2, 3, 10
 "d:\Borland C++\DISK_C\cks\include\mock.h", "C++", 0, 0, 0, 0, 13, 0, 9, 10, 32
 "d:\Borland C++\DISK_C\cks\include\mock_hand.h", "C++", 0, 0, 0, 0, 9, 0, 6, 7, 22
-"d:\Borland C++\DISK_C\cks\include\motplan.h", "C++", 0, 0, 0, 0, 39, 0, 2, 5, 46
+"d:\Borland C++\DISK_C\cks\include\motplan.h", "C++", 0, 0, 0, 0, 40, 0, 2, 5, 47
 "d:\Borland C++\DISK_C\cks\include\mouse.h", "C++", 0, 0, 0, 0, 29, 0, 22, 15, 66
-"d:\Borland C++\DISK_C\cks\include\move.h", "C++", 0, 0, 0, 0, 9, 0, 1, 3, 13
+"d:\Borland C++\DISK_C\cks\include\move.h", "C", 9, 0, 0, 0, 0, 0, 1, 3, 13
 "d:\Borland C++\DISK_C\cks\include\robolist.h", "C++", 0, 0, 0, 0, 46, 0, 14, 15, 75
 "d:\Borland C++\DISK_C\cks\include\robonum.h", "C++", 0, 0, 0, 0, 6, 0, 3, 4, 13
 "d:\Borland C++\DISK_C\cks\include\shelf.h", "C++", 0, 0, 0, 0, 22, 0, 7, 8, 37
+"d:\Borland C++\DISK_C\cks\include\show_mock.h", "C++", 0, 0, 0, 0, 8, 0, 5, 6, 19
 "d:\Borland C++\DISK_C\cks\include\welcome.h", "C", 6, 0, 0, 0, 0, 0, 3, 4, 13
-"d:\Borland C++\DISK_C\cks\path\ROBOT1.LOG", "Log", 0, 0, 0, 0, 0, 2486, 0, 1, 2487
+"d:\Borland C++\DISK_C\cks\path\ROBOT1.LOG", "Log", 0, 219, 0, 0, 0, 0, 0, 1, 220
+"d:\Borland C++\DISK_C\cks\path\ROBOT2.LOG", "Log", 0, 219, 0, 0, 0, 0, 0, 1, 220
 "d:\Borland C++\DISK_C\cks\src\BMP.c", "C", 914, 0, 0, 0, 0, 0, 140, 70, 1124
 "d:\Borland C++\DISK_C\cks\src\SVGA.C", "C", 775, 0, 0, 0, 0, 0, 383, 164, 1322
-"d:\Borland C++\DISK_C\cks\src\auto_in.c", "C", 185, 0, 0, 0, 0, 0, 18, 33, 236
-"d:\Borland C++\DISK_C\cks\src\auto_out.c", "C", 152, 0, 0, 0, 0, 0, 2, 20, 174
-"d:\Borland C++\DISK_C\cks\src\draw.c", "C", 92, 0, 0, 0, 0, 0, 0, 7, 99
-"d:\Borland C++\DISK_C\cks\src\encrypt.c", "C", 96, 0, 0, 0, 0, 0, 23, 15, 134
-"d:\Borland C++\DISK_C\cks\src\energy.c", "C", 126, 0, 0, 0, 0, 0, 0, 9, 135
+"d:\Borland C++\DISK_C\cks\src\auto_in.c", "C", 247, 0, 0, 0, 0, 0, 16, 35, 298
+"d:\Borland C++\DISK_C\cks\src\auto_out.c", "C", 306, 0, 0, 0, 0, 0, 17, 37, 360
+"d:\Borland C++\DISK_C\cks\src\draw.c", "C", 220, 0, 0, 0, 0, 0, 10, 33, 263
+"d:\Borland C++\DISK_C\cks\src\encrypt.c", "C", 110, 0, 0, 0, 0, 0, 23, 16, 149
+"d:\Borland C++\DISK_C\cks\src\energy.c", "C", 178, 0, 0, 0, 0, 0, 0, 10, 188
 "d:\Borland C++\DISK_C\cks\src\ghz.c", "C", 199, 0, 0, 0, 0, 0, 5, 39, 243
 "d:\Borland C++\DISK_C\cks\src\hz.c", "C", 509, 0, 0, 0, 0, 0, 16, 28, 553
 "d:\Borland C++\DISK_C\cks\src\input.c", "C", 95, 0, 0, 0, 0, 0, 0, 8, 103
 "d:\Borland C++\DISK_C\cks\src\introd.c", "C", 79, 0, 0, 0, 0, 0, 0, 14, 93
-"d:\Borland C++\DISK_C\cks\src\item.c", "C", 112, 0, 0, 0, 0, 0, 0, 8, 120
+"d:\Borland C++\DISK_C\cks\src\item.c", "C", 177, 0, 0, 0, 0, 0, 0, 9, 186
 "d:\Borland C++\DISK_C\cks\src\login.c", "C", 368, 0, 0, 0, 0, 0, 2, 27, 397
 "d:\Borland C++\DISK_C\cks\src\main.c", "C", 50, 0, 0, 0, 0, 0, 0, 22, 72
-"d:\Borland C++\DISK_C\cks\src\main_menu.c", "C", 226, 0, 0, 0, 0, 0, 0, 23, 249
-"d:\Borland C++\DISK_C\cks\src\map.c", "C", 113, 0, 0, 0, 0, 0, 25, 21, 159
-"d:\Borland C++\DISK_C\cks\src\mock.c", "C", 193, 0, 0, 0, 0, 0, 0, 33, 226
-"d:\Borland C++\DISK_C\cks\src\mock_hand.c", "C", 370, 0, 0, 0, 0, 0, 5, 34, 409
-"d:\Borland C++\DISK_C\cks\src\motplan.c", "C", 453, 0, 0, 0, 0, 0, 60, 64, 577
+"d:\Borland C++\DISK_C\cks\src\main_menu.c", "C", 192, 0, 0, 0, 0, 0, 0, 12, 204
+"d:\Borland C++\DISK_C\cks\src\map.c", "C", 90, 0, 0, 0, 0, 0, 25, 17, 132
+"d:\Borland C++\DISK_C\cks\src\mappv.c", "C", 111, 0, 0, 0, 0, 0, 0, 8, 119
+"d:\Borland C++\DISK_C\cks\src\mock.c", "C", 256, 0, 0, 0, 0, 0, 0, 35, 291
+"d:\Borland C++\DISK_C\cks\src\mock_hand.c", "C", 447, 0, 0, 0, 0, 0, 5, 42, 494
+"d:\Borland C++\DISK_C\cks\src\motplan.c", "C", 478, 0, 0, 0, 0, 0, 63, 66, 607
 "d:\Borland C++\DISK_C\cks\src\mouse.c", "C", 276, 0, 0, 0, 0, 0, 47, 32, 355
 "d:\Borland C++\DISK_C\cks\src\move.c", "C", 29, 0, 0, 0, 0, 0, 0, 4, 33
-"d:\Borland C++\DISK_C\cks\src\robolist.c", "C", 188, 0, 0, 0, 0, 0, 10, 30, 228
-"d:\Borland C++\DISK_C\cks\src\robonum.c", "C", 108, 0, 0, 0, 0, 0, 0, 10, 118
+"d:\Borland C++\DISK_C\cks\src\robolist.c", "C", 185, 0, 0, 0, 0, 0, 10, 30, 225
+"d:\Borland C++\DISK_C\cks\src\robonum.c", "C", 187, 0, 0, 0, 0, 0, 0, 12, 199
 "d:\Borland C++\DISK_C\cks\src\shelf.c", "C", 79, 0, 0, 0, 0, 0, 7, 17, 103
+"d:\Borland C++\DISK_C\cks\src\show_mock.c", "C", 480, 0, 0, 0, 0, 0, 0, 33, 513
 "d:\Borland C++\DISK_C\cks\src\welcome.c", "C", 55, 0, 0, 0, 0, 0, 0, 8, 63
-"Total", "-", 6913, 22, 2, 48, 402, 2486, 1118, 1292, 12283
+"Total", "-", 8175, 438, 2, 48, 408, 22, 1151, 1390, 11634

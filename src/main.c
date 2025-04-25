@@ -2,18 +2,20 @@
 
 int main()
 {
-    int flag=0;//页面标志
-    int robonum=0;//机器人数量
-    int item[3]={0,0,0};//货物数量
-    ROHEAD *rohp;//机器人链表头指针
-    SHHEAD *shhp;//货架链表头指针
+    int flag=0;             //页面标志
+    int robonum=0;          //机器人数量
+    int item[3]={0,0,0};    //货物数量
+    ROHEAD *rohp;           //机器人链表头指针
+    SHHEAD *shhp;           //货架链表头指针
 
-    rohp->length=0;//初始化机器人链表长度
-    shhp->length=0;//初始化货架链表长度
+    rohp->length=0;         //初始化机器人链表长度
+    rohp->head=NULL;       //初始化机器人链表头指针
+    shhp->length=0;         //初始化货架链表长度
+    shhp->head=NULL;       //初始化货架链表头指针
 
-    SetSVGA64k();//设置图形模式
-    mouse_init();//初始化鼠标
-    init_map();//初始化地图
+    SetSVGA64k();           //设置图形模式
+    mouse_init();           //初始化鼠标
+    init_map();             //初始化地图
     
     while(1){
         
@@ -37,7 +39,7 @@ int main()
             case 5:item_menu(&flag,item,&shhp);//货物菜单界面
                     break;
 
-            case 6:energy_monitor(&flag,rohp);//货架菜单界面
+            case 6:energy_monitor(&flag,rohp);//信息一览界面
                     break;
 
             case 7:mock_menu(&flag,&robonum,item,rohp,shhp);//模拟菜单界面
@@ -59,6 +61,9 @@ int main()
                     break;
                 
             case 13:mock_handout(&flag,item);//手动模拟出库界面
+                    break;
+
+            case 14:report_menu(&flag);//报告界面
                     break;
 
             default:flag=3;//防卡死

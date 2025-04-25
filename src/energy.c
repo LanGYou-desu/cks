@@ -2,16 +2,10 @@
 
 int energy_monitor(int *flag,ROHEAD *rohp)
 {
-    if(rohp->length==0)
-    {
-       draw_none_robot();
-       *flag=4;
-       delay(1500);
-       return 0;
-    }
+    int star[8]={0};
 
     mouse_off(&mouse);
-    draw_energy_monitor(flag,rohp);
+    draw_energy_monitor(rohp);
     mouse_on(mouse);
 
     while(1)
@@ -19,15 +13,7 @@ int energy_monitor(int *flag,ROHEAD *rohp)
         mouse_show(&mouse);
         if(mouse_press(0,0,100,50)==1)
         {
-            *flag=3;
-            return 0;
-        }
-        if(mouse_press(374,595,653,690)==1)
-        {
-            mouse_off(&mouse);
-            charge(rohp);
-            prt_hz24(470,565,"充电完毕！",0X0000,"HZK\\Hzk24h");
-            delay(500);
+            *flag=3;//返回
             return 0;
         }
         else if(mouse_press(0,50,100,150) == 1)
@@ -35,7 +21,7 @@ int energy_monitor(int *flag,ROHEAD *rohp)
             *flag = 4;//设置人机
             return 0;
         }
-        else if(mouse_press(0,250,100,350) == 1)
+        else if(mouse_press(0,150,100,250) == 1)
         {
             *flag = 5;//设置货物
             return 0;
@@ -74,49 +60,149 @@ int energy_monitor(int *flag,ROHEAD *rohp)
                 }
             }
         }
+
+        if(mouse.x>=282&&mouse.x<=332&&mouse.y>=685&&mouse.y<=735&&star[0]==0&&rohp->length>=1)//机器人1
+        {
+            star[0]=1;
+            bar1(282,685,332,735,0XD69A);
+            draw_showbox(138,530);
+            show_energy(138,530,rohp,1);
+        }
+        else if(!(mouse.x>=282&&mouse.x<=332&&mouse.y>=685&&mouse.y<=735)&&star[0]==1&&rohp->length>=1)
+        {
+            star[0]=0;
+            draw_energy_monitor(rohp);
+        }
+
+        if(mouse.x>=218&&mouse.x<=268&&mouse.y>=685&&mouse.y<=735&&star[1]==0&&rohp->length>=2)//机器人2
+        {
+            star[1]=1;
+            bar1(218,685,268,735,0XD69A);
+            draw_showbox(138,530);
+            show_energy(138,530,rohp,2);
+        }
+        else if(!(mouse.x>=218&&mouse.x<=268&&mouse.y>=685&&mouse.y<=735)&&star[1]==1&&rohp->length>=2)
+        {
+            star[1]=0;
+            draw_energy_monitor(rohp);
+        }
+
+        if(mouse.x>=154&&mouse.x<=204&&mouse.y>=685&&mouse.y<=735&&star[2]==0&&rohp->length>=3)//机器人3
+        {
+            star[2]=1;
+            bar1(154,685,204,735,0XD69A);
+            draw_showbox(138,530);
+            show_energy(138,530,rohp,3);
+        }
+        else if(!(mouse.x>=154&&mouse.x<=204&&mouse.y>=685&&mouse.y<=735)&&star[2]==1&&rohp->length>=3)
+        {
+            star[2]=0;
+            draw_energy_monitor(rohp);
+        }
+
+        if(mouse.x>=135&&mouse.x<=219&&mouse.y>=188&&mouse.y<=607)//一类货架
+        {
+            if(star[3]==0)
+            {
+                star[3]=1;
+                bar1(132,186,219,609,0XD69A);
+                draw_showbox(195,325);
+                show_item(195,325,1);
+            }
+        }
+        else if(star[3]==1)
+        {
+            star[3]=0;
+            draw_energy_monitor(rohp);
+        }
+
+        if(mouse.x>=471&&mouse.x<=555&&mouse.y>=188&&mouse.y<=607)//二类货架
+        {
+            if(star[4]==0)
+            {
+                star[4]=1;
+                bar1(468,186,555,609,0XD69A);
+                draw_showbox(406,325);
+                show_item(406,325,2);
+            }
+        }
+        else if(star[4]==1)
+        {
+            star[4]=0;
+            draw_energy_monitor(rohp);
+        }
+
+        if(mouse.x>=807&&mouse.x<=891&&mouse.y>=188&&mouse.y<=607)//三类货架
+        {
+            if(star[5]==0)
+            {
+                star[5]=1;
+                bar1(804,186,891,609,0XD69A);
+                draw_showbox(623,325);
+                show_item(623,325,3);
+            }
+        }
+        else if(star[5]==1)
+        {
+            star[5]=0;
+            draw_energy_monitor(rohp);
+        }
+
+        if(mouse_press(727,650,924,750)==1)
+        {
+            charge(rohp);
+            prt_hz24(464,620,"充电完毕！",0X0000,"HZK\\Hzk24h");
+            delay(500);
+            draw_energy_monitor(rohp);
+        }
     }
 }
 
-void draw_energy_monitor(int *flag,ROHEAD *rohp)
+void draw_energy_monitor(ROHEAD *rohp)
 {
-    bar1(0,0,1024,768,0XFFFF);
-    bar1(0,0,100,50,0X67FC);
-    draw_button(374,595,653,690);
-    puthz(18,9,"返回",32,32,0X0000);
-    puthz(470,619,"充电",48,48,0X0000);
+    int count=1;
+    RONODE *p=rohp->head;
 
-    if(rohp->length==1)
-    {
-        Readbmp64k(396,100,"image\\robot.bmp");
-        show_energy(rohp);
-    }
-    else if(rohp->length==2)
-    {
-        Readbmp64k(186,100,"image\\drobot.bmp");
-        show_energy(rohp);
-    }
-    else if(rohp->length==3)
-    {
-        Readbmp64k(106,100,"image\\robot.bmp");
-        Readbmp64k(420,100,"image\\robot.bmp");
-        Readbmp64k(734,100,"image\\robot.bmp");
-        show_energy(rohp);
-    }
-    else
-    {
-        draw_none_robot();
-       *flag=3;
-       delay(1500);
-       return 0;
-    }
+    bar1(0,0,1024,768,0XFFFF);
+    Readbmp64k(120,0,"image\\map.bmp");
+    bar1(0,0,100,50,0X67FC);
+    puthz(18,9,"返回",32,32,0X0000);
 
     draw_mainselector();
-    bar1(0,150,100,250,0XD69A);
-    puthz(18,164,"电量",32,32,0X0000);
-    puthz(18,204,"监测",32,32,0X0000);
-    Line_Thick(0,150,100,150,2,0X0000);
+    bar1(0,250,100,350,0XD69A);
+    puthz(18,264,"信息",32,32,0X0000);
+    puthz(18,304,"一览",32,32,0X0000);
+    Line_Thick(0,350,100,350,2,0X0000);
     Line_Thick(0,250,100,250,2,0X0000);
     Line_Thick(100,0,100,768,2,0X0000);
+
+    if(rohp->length!=0)
+    {
+        bar1(727,650,924,750,0X67FC);
+        puthz(777,676,"充电",48,48,0X0000);
+        Line_Thick(727,650,727,750,1,0X0000);
+        Line_Thick(924,650,924,750,1,0X0000);
+        Line_Thick(727,650,924,650,1,0X0000);
+        Line_Thick(727,750,924,750,1,0X0000);
+    }
+
+    while(p!=NULL)
+    {
+        if(count==1)
+        {
+            draw_robot(307,710,0);
+        }
+        else if(count==2)
+        {
+            draw_robot(243,710,0);
+        }
+        else if(count==3)
+        {
+            draw_robot(179,710,0);
+        }
+        count++;
+        p=p->next;
+    }
 }
 
 void draw_none_robot()
@@ -136,53 +222,45 @@ void charge(ROHEAD *rohp)
     }
 }
 
-void show_energy(ROHEAD *rohp)
+void show_energy(int x, int y, ROHEAD *rohp, int type)
 {
-    int x=0;
-    int y=0;
     int energy=0;
-    char temp[4];
+    char temp1[4];
+    char temp2[2];
     RONODE *p=rohp->head;
 
-    if(rohp->length==1)
+    while(p!=NULL)
     {
-        x=470;
-        while(p!=NULL)
+        if(p->robot.id==type)
         {
-            y=x;
             energy=(int)p->robot.energy;
-            itoa(energy,temp,10);
-            strcat(temp,"%");
-            put_asc16_size(y,445,3,3,temp,0X0000);
-            p=p->next;  
+            itoa(energy,temp1,10);
+            strcat(temp1,"%");
+            put_asc16_size(x+110,y+65,3,3,temp1,0X0000);
+            break;
         }
+        p=p->next;
     }
-    else if(rohp->length==2)
-    {
-        x=260;
-        while(p!=NULL)
-        {
-            y=x;
-            energy=(int)p->robot.energy;
-            itoa(energy,temp,10);
-            strcat(temp,"%");
-            put_asc16_size(y,445,3,3,temp,0X0000);
-            x=x+420;
-            p=p->next;
-        }
-    }
-    else if(rohp->length==3)
-    {
-        x=180;
-        while(p!=NULL)
-        {
-            y=x;
-            energy=(int)p->robot.energy;
-            itoa(energy,temp,10);
-            strcat(temp,"%");
-            put_asc16_size(y,445,3,3,temp,0X0000);
-            x=x+314;
-            p=p->next;
-        }
-    }
+
+    itoa(type,temp2,10);
+    put_asc16_size(x+110,y+21,3,3,temp2,0X0000);
+
+    puthz(x+20,y+26,"编号：",32,32,0X0000);
+    puthz(x+20,y+70,"电量：",32,32,0X0000);
+}
+
+void show_item(int x, int y, int type)
+{
+    int energy=0;
+    char temp1[4];
+    char temp2[2];
+
+    itoa(statistics_in[type-1]-statistics_out[type-1],temp1,10);
+    put_asc16_size(x+125,y+65,3,3,temp1,0X0000);
+      
+    itoa(type,temp2,10);
+    put_asc16_size(x+125,y+21,3,3,temp2,0X0000);
+
+    puthz(x+38,y+26,"编号：",32,32,0X0000);
+    puthz(x+38,y+70,"货物：",32,32,0X0000);
 }

@@ -17,6 +17,9 @@ void draw_selecter();
 /*判断是否能模拟*/
 int judge_mock(int robonum, int *item);
 
+/*判断货物数量是否足够*/
+int judge_itemnum(int *item);
+
 /*随机数*/
 int random_num(void);
 

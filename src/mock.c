@@ -47,7 +47,7 @@ int mock_menu(int *flag,int *robonum,int *item,ROHEAD *rohp,SHHEAD *shhp)
             *flag=9;//入库
             return 0;
         }
-        else if(mouse_press(374,595,653,690)==1&&judge_mock(*robonum,item)==1&&auto_flag==1)
+        else if(mouse_press(374,595,653,690)==1&&judge_mock(*robonum,item)==1&&auto_flag==1&&judge_itemnum(item)==1)
         {
             *flag=8;//出库
             return 0;
@@ -61,6 +61,12 @@ int mock_menu(int *flag,int *robonum,int *item,ROHEAD *rohp,SHHEAD *shhp)
         else if(mouse_press(374,595,653,690)==1&&judge_mock(*robonum,item)==0&&auto_flag==1)
         {
             prt_hz24(469,290,"数量有误！",10,"HZK\\Hzk24h");
+            delay(500);
+            return 0;
+        }
+        else if(mouse_press(374,595,653,690)==1&&judge_mock(*robonum,item)==1&&auto_flag==1&&judge_itemnum(item)==0)
+        {
+            prt_hz24(469,290,"货物不足！",10,"HZK\\Hzk24h");
             delay(500);
             return 0;
         }
@@ -83,12 +89,12 @@ int mock_menu(int *flag,int *robonum,int *item,ROHEAD *rohp,SHHEAD *shhp)
         }
         else if(mouse_press(0,150,100,250) == 1)
         {
-            *flag = 6;//电量监测
+            *flag = 5;//设置货物
             return 0;
         }
         else if(mouse_press(0,250,100,350) == 1)
         {
-            *flag = 5;//设置货物
+            *flag = 6;//电量监测
             return 0;
         }
         else if(mouse_press(0,450,100,550) == 1)
@@ -231,6 +237,19 @@ int judge_mock(int robonum,int *item)
    {
        return 1;
    }
+}
+
+int judge_itemnum(int *item)
+{
+    int i;
+    for(i=0;i<3;i++)
+    {
+        if(statistics_in[i]-statistics_out[i]-item[i]<0)
+        {
+            return 0;
+        }
+    }
+    return 1;
 }
 
 int random_num()

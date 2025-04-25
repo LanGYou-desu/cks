@@ -6,6 +6,7 @@ void draw_trace(int robonum)
     int i=0,j=0;
     int x=0,y=0;    //坐标
     int px=0,py=0;  //上一个坐标
+    int type=0; 
     FILE *fp;
 
     char tracefile[3][30]={
@@ -16,6 +17,7 @@ void draw_trace(int robonum)
 
     for(i=0;i<robonum;i++)
     {
+        j=0;
         fp=fopen(tracefile[i],"r");
         if(fp==NULL)
         {
@@ -24,7 +26,7 @@ void draw_trace(int robonum)
         }
         if(color==1)
         {
-            while(fscanf(fp,"%d,%d",&x,&y)!=EOF)
+            while(fscanf(fp,"%d,%d,%d",&x,&y,&type)!=EOF)
             {
                 if(j==0)
                 {
@@ -43,7 +45,7 @@ void draw_trace(int robonum)
         }
         else if(color==2)
         {
-            while(fscanf(fp,"%d,%d",&x,&y)!=EOF)
+            while(fscanf(fp,"%d,%d,%d",&x,&y,&type)!=EOF)
             {
                 if(j==0)
                 {
@@ -62,7 +64,7 @@ void draw_trace(int robonum)
         }
         else if(color==3)
         {
-            while(fscanf(fp,"%d,%d",&x,&y)!=EOF)
+            while(fscanf(fp,"%d,%d,%d",&x,&y,&type)!=EOF)
             {
                 if(j==0)
                 {

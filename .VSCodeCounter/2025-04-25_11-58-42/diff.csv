@@ -1,0 +1,21 @@
+"filename", "language", "C", "Log", "C++", "comment", "blank", "total"
+"d:\Borland C++\DISK_C\cks\include\allfunc.h", "C", 2, 0, 0, 0, 0, 2
+"d:\Borland C++\DISK_C\cks\include\draw.h", "C++", 0, 0, 3, 2, 2, 7
+"d:\Borland C++\DISK_C\cks\include\main_menu.h", "C++", 0, 0, -1, -1, -1, -3
+"d:\Borland C++\DISK_C\cks\include\mock.h", "C++", 0, 0, -2, -2, -2, -6
+"d:\Borland C++\DISK_C\cks\include\motplan.h", "C++", 0, 0, 1, 0, 0, 1
+"d:\Borland C++\DISK_C\cks\include\show_mock.h", "C++", 0, 0, 8, 5, 6, 19
+"d:\Borland C++\DISK_C\cks\path\ROBOT1.LOG", "Log", 0, -4475, 0, 0, 0, -4475
+"d:\Borland C++\DISK_C\cks\path\ROBOT2.LOG", "Log", 0, -4475, 0, 0, 0, -4475
+"d:\Borland C++\DISK_C\cks\path\ROBOT3.LOG", "Log", 0, -4694, 0, 0, -1, -4695
+"d:\Borland C++\DISK_C\cks\src\auto_in.c", "C", 17, 0, 0, 0, 1, 18
+"d:\Borland C++\DISK_C\cks\src\auto_out.c", "C", 15, 0, 0, -1, 0, 14
+"d:\Borland C++\DISK_C\cks\src\draw.c", "C", 92, 0, 0, 10, 16, 118
+"d:\Borland C++\DISK_C\cks\src\item.c", "C", -1, 0, 0, 0, 0, -1
+"d:\Borland C++\DISK_C\cks\src\main_menu.c", "C", -14, 0, 0, 0, -3, -17
+"d:\Borland C++\DISK_C\cks\src\mappv.c", "C", 38, 0, 0, 0, 2, 40
+"d:\Borland C++\DISK_C\cks\src\mock.c", "C", -182, 0, 0, 0, -6, -188
+"d:\Borland C++\DISK_C\cks\src\mock_hand.c", "C", 77, 0, 0, 0, 8, 85
+"d:\Borland C++\DISK_C\cks\src\motplan.c", "C", 20, 0, 0, 3, 1, 24
+"d:\Borland C++\DISK_C\cks\src\show_mock.c", "C", 480, 0, 0, 0, 33, 513
+"Total", "-", 544, -13644, 9, 16, 56, -13019

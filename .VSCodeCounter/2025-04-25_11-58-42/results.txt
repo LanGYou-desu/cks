@@ -1,14 +1,14 @@
-Date : 2025-04-23 19:15:20
+Date : 2025-04-25 11:58:42
 Directory : d:\Borland C++\DISK_C\cks
-Total : 55 files,  9873 codes, 1118 comments, 1292 blanks, all 12283 lines
+Total : 60 files,  9093 codes, 1151 comments, 1390 blanks, all 11634 lines
 
 Languages
 +--------------------+------------+------------+------------+------------+------------+
 | language           | files      | code       | comment    | blank      | total      |
 +--------------------+------------+------------+------------+------------+------------+
-| C                  |         29 |      6,913 |        881 |      1,080 |      8,874 |
-| Log                |          1 |      2,486 |          0 |          1 |      2,487 |
-| C++                |         22 |        402 |        208 |        187 |        797 |
+| C                  |         32 |      8,175 |        908 |      1,171 |     10,254 |
+| Log                |          2 |        438 |          0 |          2 |        440 |
+| C++                |         23 |        408 |        214 |        193 |        815 |
 | Makefile           |          1 |         48 |         29 |         23 |        100 |
 | JSON with Comments |          1 |         22 |          0 |          0 |         22 |
 | Markdown           |          1 |          2 |          0 |          1 |          3 |
@@ -18,12 +18,12 @@ Directories
 +-----------------------------------------------+------------+------------+------------+------------+------------+
 | path                                          | files      | code       | comment    | blank      | total      |
 +-----------------------------------------------+------------+------------+------------+------------+------------+
-| .                                             |         55 |      9,873 |      1,118 |      1,292 |     12,283 |
+| .                                             |         60 |      9,093 |      1,151 |      1,390 |     11,634 |
 | . (Files)                                     |          3 |         72 |         29 |         24 |        125 |
 | BGI                                           |          1 |        962 |        128 |        314 |      1,404 |
-| include                                       |         25 |        511 |        218 |        213 |        942 |
-| path                                          |          1 |      2,486 |          0 |          1 |      2,487 |
-| src                                           |         25 |      5,842 |        743 |        740 |      7,325 |
+| include                                       |         27 |        529 |        225 |        222 |        976 |
+| path                                          |          2 |        438 |          0 |          2 |        440 |
+| src                                           |         27 |      7,092 |        769 |        828 |      8,689 |
 +-----------------------------------------------+------------+------------+------------+------------+------------+
 
 Files
@@ -36,10 +36,10 @@ Files
 | d:\Borland C++\DISK_C\cks\cks.code-workspace  | JSON with Comments |         22 |          0 |          0 |         22 |
 | d:\Borland C++\DISK_C\cks\include\BMP.h       | C++                |         58 |         26 |         18 |        102 |
 | d:\Borland C++\DISK_C\cks\include\SVGA.H      | C++                |         44 |         58 |         19 |        121 |
-| d:\Borland C++\DISK_C\cks\include\allfunc.h   | C                  |         89 |          0 |         13 |        102 |
+| d:\Borland C++\DISK_C\cks\include\allfunc.h   | C                  |         92 |          0 |         13 |        105 |
 | d:\Borland C++\DISK_C\cks\include\auto_in.h   | C++                |          7 |          4 |          5 |         16 |
 | d:\Borland C++\DISK_C\cks\include\auto_out.h  | C++                |          8 |          5 |          6 |         19 |
-| d:\Borland C++\DISK_C\cks\include\draw.h      | C++                |          9 |          6 |          7 |         22 |
+| d:\Borland C++\DISK_C\cks\include\draw.h      | C++                |         13 |          9 |         10 |         32 |
 | d:\Borland C++\DISK_C\cks\include\encrypt.h   | C                  |         14 |          7 |          9 |         30 |
 | d:\Borland C++\DISK_C\cks\include\energy.h    | C++                |          8 |          5 |          6 |         19 |
 | d:\Borland C++\DISK_C\cks\include\ghz.h       | C++                |          6 |          0 |          6 |         12 |
@@ -48,42 +48,47 @@ Files
 | d:\Borland C++\DISK_C\cks\include\introd.h    | C++                |          7 |          0 |          5 |         12 |
 | d:\Borland C++\DISK_C\cks\include\item.h      | C++                |          5 |          2 |          3 |         10 |
 | d:\Borland C++\DISK_C\cks\include\login.h     | C++                |          9 |          4 |          5 |         18 |
-| d:\Borland C++\DISK_C\cks\include\main_menu.h | C++                |          7 |          4 |          5 |         16 |
-| d:\Borland C++\DISK_C\cks\include\map.h       | C++                |         31 |         11 |         13 |         55 |
+| d:\Borland C++\DISK_C\cks\include\main_menu.h | C++                |          6 |          3 |          4 |         13 |
+| d:\Borland C++\DISK_C\cks\include\map.h       | C++                |         29 |          9 |         11 |         49 |
+| d:\Borland C++\DISK_C\cks\include\mappv.h     | C++                |          5 |          2 |          3 |         10 |
 | d:\Borland C++\DISK_C\cks\include\mock.h      | C++                |         13 |          9 |         10 |         32 |
 | d:\Borland C++\DISK_C\cks\include\mock_hand.h | C++                |          9 |          6 |          7 |         22 |
-| d:\Borland C++\DISK_C\cks\include\motplan.h   | C++                |         39 |          2 |          5 |         46 |
+| d:\Borland C++\DISK_C\cks\include\motplan.h   | C++                |         40 |          2 |          5 |         47 |
 | d:\Borland C++\DISK_C\cks\include\mouse.h     | C++                |         29 |         22 |         15 |         66 |
-| d:\Borland C++\DISK_C\cks\include\move.h      | C++                |          9 |          1 |          3 |         13 |
+| d:\Borland C++\DISK_C\cks\include\move.h      | C                  |          9 |          1 |          3 |         13 |
 | d:\Borland C++\DISK_C\cks\include\robolist.h  | C++                |         46 |         14 |         15 |         75 |
 | d:\Borland C++\DISK_C\cks\include\robonum.h   | C++                |          6 |          3 |          4 |         13 |
 | d:\Borland C++\DISK_C\cks\include\shelf.h     | C++                |         22 |          7 |          8 |         37 |
+| d:\Borland C++\DISK_C\cks\include\show_mock.h | C++                |          8 |          5 |          6 |         19 |
 | d:\Borland C++\DISK_C\cks\include\welcome.h   | C                  |          6 |          3 |          4 |         13 |
-| d:\Borland C++\DISK_C\cks\path\ROBOT1.LOG     | Log                |      2,486 |          0 |          1 |      2,487 |
+| d:\Borland C++\DISK_C\cks\path\ROBOT1.LOG     | Log                |        219 |          0 |          1 |        220 |
+| d:\Borland C++\DISK_C\cks\path\ROBOT2.LOG     | Log                |        219 |          0 |          1 |        220 |
 | d:\Borland C++\DISK_C\cks\src\BMP.c           | C                  |        914 |        140 |         70 |      1,124 |
 | d:\Borland C++\DISK_C\cks\src\SVGA.C          | C                  |        775 |        383 |        164 |      1,322 |
-| d:\Borland C++\DISK_C\cks\src\auto_in.c       | C                  |        185 |         18 |         33 |        236 |
-| d:\Borland C++\DISK_C\cks\src\auto_out.c      | C                  |        152 |          2 |         20 |        174 |
-| d:\Borland C++\DISK_C\cks\src\draw.c          | C                  |         92 |          0 |          7 |         99 |
-| d:\Borland C++\DISK_C\cks\src\encrypt.c       | C                  |         96 |         23 |         15 |        134 |
-| d:\Borland C++\DISK_C\cks\src\energy.c        | C                  |        126 |          0 |          9 |        135 |
+| d:\Borland C++\DISK_C\cks\src\auto_in.c       | C                  |        247 |         16 |         35 |        298 |
+| d:\Borland C++\DISK_C\cks\src\auto_out.c      | C                  |        306 |         17 |         37 |        360 |
+| d:\Borland C++\DISK_C\cks\src\draw.c          | C                  |        220 |         10 |         33 |        263 |
+| d:\Borland C++\DISK_C\cks\src\encrypt.c       | C                  |        110 |         23 |         16 |        149 |
+| d:\Borland C++\DISK_C\cks\src\energy.c        | C                  |        178 |          0 |         10 |        188 |
 | d:\Borland C++\DISK_C\cks\src\ghz.c           | C                  |        199 |          5 |         39 |        243 |
 | d:\Borland C++\DISK_C\cks\src\hz.c            | C                  |        509 |         16 |         28 |        553 |
 | d:\Borland C++\DISK_C\cks\src\input.c         | C                  |         95 |          0 |          8 |        103 |
 | d:\Borland C++\DISK_C\cks\src\introd.c        | C                  |         79 |          0 |         14 |         93 |
-| d:\Borland C++\DISK_C\cks\src\item.c          | C                  |        112 |          0 |          8 |        120 |
+| d:\Borland C++\DISK_C\cks\src\item.c          | C                  |        177 |          0 |          9 |        186 |
 | d:\Borland C++\DISK_C\cks\src\login.c         | C                  |        368 |          2 |         27 |        397 |
 | d:\Borland C++\DISK_C\cks\src\main.c          | C                  |         50 |          0 |         22 |         72 |
-| d:\Borland C++\DISK_C\cks\src\main_menu.c     | C                  |        226 |          0 |         23 |        249 |
-| d:\Borland C++\DISK_C\cks\src\map.c           | C                  |        113 |         25 |         21 |        159 |
-| d:\Borland C++\DISK_C\cks\src\mock.c          | C                  |        193 |          0 |         33 |        226 |
-| d:\Borland C++\DISK_C\cks\src\mock_hand.c     | C                  |        370 |          5 |         34 |        409 |
-| d:\Borland C++\DISK_C\cks\src\motplan.c       | C                  |        453 |         60 |         64 |        577 |
+| d:\Borland C++\DISK_C\cks\src\main_menu.c     | C                  |        192 |          0 |         12 |        204 |
+| d:\Borland C++\DISK_C\cks\src\map.c           | C                  |         90 |         25 |         17 |        132 |
+| d:\Borland C++\DISK_C\cks\src\mappv.c         | C                  |        111 |          0 |          8 |        119 |
+| d:\Borland C++\DISK_C\cks\src\mock.c          | C                  |        256 |          0 |         35 |        291 |
+| d:\Borland C++\DISK_C\cks\src\mock_hand.c     | C                  |        447 |          5 |         42 |        494 |
+| d:\Borland C++\DISK_C\cks\src\motplan.c       | C                  |        478 |         63 |         66 |        607 |
 | d:\Borland C++\DISK_C\cks\src\mouse.c         | C                  |        276 |         47 |         32 |        355 |
 | d:\Borland C++\DISK_C\cks\src\move.c          | C                  |         29 |          0 |          4 |         33 |
-| d:\Borland C++\DISK_C\cks\src\robolist.c      | C                  |        188 |         10 |         30 |        228 |
-| d:\Borland C++\DISK_C\cks\src\robonum.c       | C                  |        108 |          0 |         10 |        118 |
+| d:\Borland C++\DISK_C\cks\src\robolist.c      | C                  |        185 |         10 |         30 |        225 |
+| d:\Borland C++\DISK_C\cks\src\robonum.c       | C                  |        187 |          0 |         12 |        199 |
 | d:\Borland C++\DISK_C\cks\src\shelf.c         | C                  |         79 |          7 |         17 |        103 |
+| d:\Borland C++\DISK_C\cks\src\show_mock.c     | C                  |        480 |          0 |         33 |        513 |
 | d:\Borland C++\DISK_C\cks\src\welcome.c       | C                  |         55 |          0 |          8 |         63 |
-| Total                                         |                    |      9,873 |      1,118 |      1,292 |     12,283 |
+| Total                                         |                    |      9,093 |      1,151 |      1,390 |     11,634 |
 +-----------------------------------------------+--------------------+------------+------------+------------+------------+

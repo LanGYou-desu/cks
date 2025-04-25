@@ -58,6 +58,11 @@ void logout(){
     mouse_off(&mouse);
     bar1(0,0,1024,768,0XFFFF);
     Readbmp64k(0,0,"image\\goodbye.bmp");
+    free(robotlist);
+    free(obs);
+    free(point);
+    free(shelfpoint);
+    free(lift);
     delay(1500);  
     exit(0);
 }
